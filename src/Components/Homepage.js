@@ -5,6 +5,12 @@ const HomePage = () => {
   return (
     <>
       <Container>
+        <Header>
+          <div>
+            <SignIn>Sign In</SignIn>
+            <SignUp>Sign Up</SignUp>
+          </div>
+        </Header>
         <TitleContainer>
           <NightIn>Night In</NightIn>
           <NightOut>Night Out</NightOut>
@@ -20,6 +26,9 @@ const HomePage = () => {
   );
 };
 
+const Header = styled.header``;
+const SignIn = styled.p``;
+const SignUp = styled.p``;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +56,7 @@ const TitleContainer = styled.div`
   top: 20%;
   width: 80%;
   height: 10%;
-  border: 5px solid black;
+
   /* background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
