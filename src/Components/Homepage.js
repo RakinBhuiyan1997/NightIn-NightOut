@@ -1,25 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
       <Container>
-        <Header>
-          <div>
-            <SignIn>Sign In</SignIn>
-            <SignUp>Sign Up</SignUp>
-          </div>
-        </Header>
+        <Header></Header>
         <TitleContainer>
           <NightIn>Night In</NightIn>
           <NightOut>Night Out</NightOut>
         </TitleContainer>
 
         <ChoiceContainer>
-          <span>Choose The Vibe</span>
-          <Button>Night In</Button>
-          <Button>Night Out</Button>
+          <Button>
+            <StyledLink to="/SignIn">Sign In</StyledLink>
+          </Button>
+          <Button>
+            <StyledLink to="/SignUp">Sign Up</StyledLink>
+          </Button>
         </ChoiceContainer>
       </Container>
     </>
@@ -27,8 +25,6 @@ const HomePage = () => {
 };
 
 const Header = styled.header``;
-const SignIn = styled.p``;
-const SignUp = styled.p``;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,21 +52,6 @@ const TitleContainer = styled.div`
   top: 20%;
   width: 80%;
   height: 10%;
-
-  /* background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  } */
 `;
 const ChoiceContainer = styled.div`
   display: flex;
@@ -192,6 +173,10 @@ const Button = styled.button`
       background-position: 0 0;
     }
   }
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
 `;
 
 export default HomePage;

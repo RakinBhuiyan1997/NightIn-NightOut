@@ -11,6 +11,7 @@
     "express": "^4.17.3",
     "keyframes": "^2.3.0",
     "mongodb": "^4.5.0",
+    "mongoose": "^6.3.1",
     "morgan": "^1.10.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
