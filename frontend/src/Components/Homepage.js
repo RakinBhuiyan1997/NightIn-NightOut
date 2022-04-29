@@ -3,24 +3,22 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
-    <>
-      <Container>
-        <Header></Header>
-        <TitleContainer>
-          <NightIn>Night In</NightIn>
-          <NightOut>Night Out</NightOut>
-        </TitleContainer>
+    <Container>
+      <Header></Header>
+      <TitleContainer>
+        <NightIn>Night In</NightIn>
+        <NightOut>Night Out</NightOut>
+      </TitleContainer>
 
-        <ChoiceContainer>
-          <Button>
-            <StyledLink to="/SignIn">Sign In</StyledLink>
-          </Button>
-          <Button>
-            <StyledLink to="/SignUp">Sign Up</StyledLink>
-          </Button>
-        </ChoiceContainer>
-      </Container>
-    </>
+      <ChoiceContainer>
+        <StyledLink to="/SignIn">
+          <Button>Sign In</Button>
+        </StyledLink>
+        <StyledLink to="/SignUp">
+          <Button>Sign up</Button>
+        </StyledLink>
+      </ChoiceContainer>
+    </Container>
   );
 };
 

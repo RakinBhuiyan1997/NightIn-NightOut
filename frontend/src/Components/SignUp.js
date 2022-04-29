@@ -1,18 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { NightContext } from "./NightContext";
 
 const SignUp = () => {
+  const { addUser, setAddUser } = useContext(NightContext);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await fetch({ method: "POST" });
+  };
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Label>Email</Label>
-        <Input type="email" placeholder="example@hotmail.com" />
+        <Input
+          type="email"
+          placeholder="example@hotmail.com"
+          onChange={(e) => {
+            setAddUser({ ...addUser, email: e.target.value });
+          }}
+        />
         <Label>First Name</Label>
-        <Input type="text" placeholder="Name" />
+        <Input
+          type="text"
+          placeholder="Name"
+          onChange={(e) => {
+            setAddUser({ ...addUser, firstName: e.target.value });
+          }}
+        />
         <Label>Last Name</Label>
-        <Input type="text" placeholder="Last Name" />
+        <Input
+          type="text"
+          placeholder="Last Name"
+          onChange={(e) => {
+            setAddUser({ ...addUser, lastName: e.target.value });
+          }}
+        />
         <Label>Password</Label>
-        <Input type="password" placeholder="Password" />
+        <Input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => {
+            setAddUser({ ...addUser, password: e.target.value });
+          }}
+        />
         <button type="submit">Submit</button>
       </Form>
     </Container>

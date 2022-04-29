@@ -8,18 +8,12 @@
     "@testing-library/user-event": "^13.5.0",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
     "keyframes": "^2.3.0",
-    "mongodb": "^4.5.0",
-    "mongoose": "^6.3.1",
-    "morgan": "^1.10.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "strict": "^0.0.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "strict": "^0.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
