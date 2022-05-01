@@ -12,8 +12,11 @@ export const NightContextProvider = ({ children }) => {
     favoriteDrinks: [],
     favoriteGames: [],
   });
+  const [currentUser, setCurrentUser] = useState({});
   return (
-    <NightContext.Provider value={{ addUser, setAddUser }}>
+    <NightContext.Provider
+      value={{ addUser, setAddUser, currentUser, setCurrentUser }}
+    >
       {children}
     </NightContext.Provider>
   );

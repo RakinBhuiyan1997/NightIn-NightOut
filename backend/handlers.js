@@ -11,23 +11,28 @@ const options = {
   useUnifiedTopology: true,
 };
 
-const getIngredients = async (req, res) => {
-  const data = await fetch(
-    "www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
-  );
-  const result = data.json();
-};
+// const getIngredients = async (req, res) => {
+//   const data = await fetch(
+//     "www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+//   );
+//   const result = data.json();
+// };
 
 const addUser = async (req, res) => {
-  mongoose.connect(MONGO_URI, options);
-  const { firstName, lastName, email, password } = req.body;
-  const userData = await CreateUser.create({
-    firstName,
-    lastName,
-    email,
-    password,
-  });
-  res.status(200).json({ status: "ok", data: userData });
+  try {
+    mongoose.connect(MONGO_URI, options);
+    console.log(req.body);
+    const { firstName, lastName, email, password } = req.body;
+    const userData = await CreateUser.create({
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+    res.status(200).json({ status: "ok", data: userData });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports = {

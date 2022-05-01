@@ -20,7 +20,7 @@ express()
   // Nothing to modify above this line
   // ---------------------------------
   // add new endpoints here 👇
-  .post("/SignUp/addUser", addUser)
+  .post("/api/signUp/adduser", addUser)
   //
   // add new endpoints here ☝️
   // ---------------------------------

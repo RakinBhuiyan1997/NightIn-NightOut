@@ -3,11 +3,20 @@ import styled from "styled-components";
 import { NightContext } from "./NightContext";
 
 const SignUp = () => {
-  const { addUser, setAddUser } = useContext(NightContext);
+  const { addUser, setAddUser, currentUser, setCurrentUser } =
+    useContext(NightContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch({ method: "POST" });
+    await fetch("/api/signup/adduser", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addUser),
+    });
   };
+  console.log(addUser);
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
