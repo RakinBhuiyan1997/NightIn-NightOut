@@ -11,10 +11,10 @@ const HomePage = () => {
       </TitleContainer>
 
       <ChoiceContainer>
-        <StyledLink to="/SignIn">
+        <StyledLink to="/signin">
           <Button>Sign In</Button>
         </StyledLink>
-        <StyledLink to="/SignUp">
+        <StyledLink to="/signup">
           <Button>Sign up</Button>
         </StyledLink>
       </ChoiceContainer>
