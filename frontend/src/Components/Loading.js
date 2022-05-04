@@ -2,15 +2,12 @@ import * as React from "react";
 import { useState } from "react";
 import { render } from "react-dom";
 import { motion, MotionConfig } from "framer-motion";
-import { Refresh } from "./Refresh";
-
-import "./styles.css";
+import styled from "styled-components";
 
 const Loading = () => {
   const [count, setCount] = useState(0);
   return (
     <MotionConfig reducedMotion="user">
-      <Refresh onClick={() => setCount(count + 1)} />
       <Container>
         <motion.div
           animate={{

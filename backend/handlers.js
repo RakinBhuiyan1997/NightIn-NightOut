@@ -35,6 +35,37 @@ const addUser = async (req, res) => {
   }
 };
 
+const getDrinkCategories = async (req, res) => {
+  try {
+    const result = await fetch(
+      "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
+    );
+    const data = await result.json();
+    res.status(200).json({ status: 200, message: "data received", data: data });
+  } catch (err) {
+    res
+      .status(400)
+      .json({ status: 400, message: "Something went wrong please try again" });
+    console.log(err);
+  }
+};
+
+const getCategoryDrinks = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+    const result = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${id}`
+    );
+    const data = await result.json();
+    res.status(200).json({ status: 200, message: "data received", data: data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   addUser,
+  getDrinkCategories,
+  getCategoryDrinks,
 };

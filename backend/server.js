@@ -4,7 +4,11 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const { addUser } = require("./handlers");
+const {
+  addUser,
+  getDrinkCategories,
+  getCategoryDrinks,
+} = require("./handlers");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -21,6 +25,8 @@ express()
   // ---------------------------------
   // add new endpoints here 👇
   .post("/api/signUp/adduser", addUser)
+  .get("/api/drinks/categories", getDrinkCategories)
+  .get("/api/drinks/categories/:id", getCategoryDrinks)
   //
   // add new endpoints here ☝️
   // ---------------------------------

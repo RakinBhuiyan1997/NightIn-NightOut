@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { NightContext } from "./NightContext";
-
+import { Link } from "react-router-dom";
 const Selection = () => {
   const { currentUser } = useContext(NightContext);
 
   return (
     <Container>
       <Question>Whats the vibe tonight?</Question>
-      <Button>Night In</Button>
+      <StyledLink to="/nightin">
+        <Button>Night In</Button>
+      </StyledLink>
       <Button>Night Out</Button>
     </Container>
   );
@@ -114,5 +116,7 @@ const Question = styled.p`
   position: absolute;
   top: 10%;
 `;
+
+const StyledLink = styled(Link)``;
 
 export default Selection;
