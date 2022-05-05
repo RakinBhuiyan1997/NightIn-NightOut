@@ -64,8 +64,22 @@ const getCategoryDrinks = async (req, res) => {
   }
 };
 
+const getDrinkRecepie = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+    const data = await result.json();
+    res.status(200).json({ status: 200, message: "data received", data: data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   addUser,
   getDrinkCategories,
   getCategoryDrinks,
+  getDrinkRecepie,
 };

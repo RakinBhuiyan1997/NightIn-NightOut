@@ -18,7 +18,7 @@ const DrinksCategory = () => {
         setLoading(false);
       });
   }, []);
-  console.log(drinks);
+
   return (
     <div>
       {loading === true && <Loading />}
@@ -28,7 +28,7 @@ const DrinksCategory = () => {
             <h1>What you gonna whip up tonight?</h1>
             {drinks.map((val) => {
               return (
-                <StyledLink to={`nightin/drinks/drink/${val.idDrink}`}>
+                <StyledLink to={`/nightin/drinks/drink/${val.idDrink}`}>
                   <Card>
                     <Image src={val.strDrinkThumb} alt={val.strDrink} />
                     <h4>{val.strDrink}</h4>

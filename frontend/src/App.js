@@ -7,6 +7,7 @@ import Selection from "./Components/Selection";
 import NightIn from "./Components/NightIn";
 import Drinks from "./Components/Drinks";
 import DrinksCategory from "./Components/DrinksCategory";
+import DrinkRecepie from "./Components/DrinkRecepie";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/nightin" element={<NightIn />} />
         <Route path="/nightin/drinks" element={<Drinks />} />
         <Route path="/nightin/drinks/:id" element={<DrinksCategory />} />
-        {/* <Route path="nightin/drinks/drink/:id" element={} /> */}
+        <Route path="nightin/drinks/drink/:id" element={<DrinkRecepie />} />
       </Routes>
     </Router>
   );
