@@ -1,0 +1,26 @@
+[
+  {
+    "_id": 1,
+    "game_name": "Beer Pong",
+    "players": "2-4",
+    "items": ["beer", "cups", "table", "ping pong ball"],
+    "instructions": "Arrange ten (typically 18oz or 16oz) cups in a pyramid-like formation  on each side of the table (usually about 8ft long is standard). Fill each cup with the desired amount of beer (or other alcohol or even water if you so choose). Traditionally two 12oz beers are used to fill all ten cups, but this amount can vary depending on how much you would like to drink",
+    "imageSrc": "https://renegadebrewing.com/wp-content/uploads/2021/03/What-Is-Beer-Pong-History-Rules-Tricks.jpg"
+  },
+  {
+    "_id": 2,
+    "game_name": "Murder Ball",
+    "players": "2-4",
+    "items": ["beer, ping pong ball, table"],
+    "instructions": "The objective of the game is for your whole team to finish your beer before the other team can. To do this you need to throw the ping pong ball across the table and try to hit the other teams bottles so the ball ricochets away from the table. While the other team is attempting to recover the ball the person who just threw the ball will grab their own beer and start drinking as much of it as they can before the ball is recovered and brought back over the defending teams side of the table. After the ball is brought back to the table it is now that teams turn to go on offense and throw the ball. Once one person finishes their bottle completely they can remove it from the table and when it is their turn to throw somebody else from their team will drink their own beer if they manage to hit a bottle on the opposing side. The game is over once one team manages to finish all their beers making them the winners.",
+    "imageSrc": "https://drinkinggamezone.com/img/games/other/beer-ball.jpg"
+  },
+  {
+    "_id": 3,
+    "game_name": "Flip Cup",
+    "players": "4-16",
+    "items": ["beer or alcohol of your choice", "cups", "table"],
+    "instructions": "Split your group of people into two (or more) teams. On the flat surface in front of you line up the number of cups as teammates and fill them up to the same place so that it is fair. Once that is ready the first person to go stands in front of there cup. When “GO” is called the two players on opposite teams race to chug their beer and then flip the cup quicker than the other person. Once the beer is finished, place the cup on the edge of the table. It has to balance there with a little edge of the cup over the lip of the table. Then flip the cup and it has to land upside down (the top on the table). Once that person successfully flips their cup, the next person does the same, and so on until the last person is done. The team that finishes their flip cups wins!",
+    "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAiZaCbHfLStETYHUGlGso9_lBM8nGw2HTkQ&usqp=CAU"
+  }
+]
