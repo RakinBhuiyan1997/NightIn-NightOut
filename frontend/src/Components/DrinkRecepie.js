@@ -18,12 +18,26 @@ const DrinkRecepie = () => {
         setLoading(false);
       });
   }, []);
+
+  let arr = [];
+  let int = [];
   Object.keys(ingredients).forEach((key) => {
     if (ingredients[key] === null) {
       delete ingredients[key];
     }
   });
+  Object.keys(ingredients).forEach((key) => {
+    if (key.includes("strIngredient")) {
+      arr.push(ingredients[key]);
+    }
+  });
   console.log(ingredients);
+
+  Object.keys(ingredients).forEach((key) => {
+    if (key.includes("strMeasure")) {
+      int.push(ingredients[key]);
+    }
+  });
 
   return (
     <>
@@ -31,7 +45,27 @@ const DrinkRecepie = () => {
       {loading === false && (
         <Container>
           <Card>
-            <Receipe>{ingredients.strDrink}</Receipe>
+            <Image src={ingredients.strDrinkThumb} alt="drink image" />
+            <Receipe>
+              <h2>Ingredients</h2>
+              {arr.map((val) => {
+                return (
+                  <div>
+                    <p>{val}</p>
+                  </div>
+                );
+              })}
+              <h2>Measurements</h2>
+              {int.map((val) => {
+                return (
+                  <div>
+                    <p>{val}</p>
+                  </div>
+                );
+              })}
+              <h2>Instructions</h2>
+              <p>{ingredients.strInstructions}</p>
+            </Receipe>
           </Card>
         </Container>
       )}
@@ -42,5 +76,9 @@ const DrinkRecepie = () => {
 const Container = styled.div``;
 const Card = styled.div``;
 const Receipe = styled.div``;
+const Image = styled.img`
+  height: 50vh;
+  width: 50vh;
+`;
 
 export default DrinkRecepie;

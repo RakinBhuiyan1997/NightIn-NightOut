@@ -8,14 +8,14 @@ const options = {
   useUnifiedTopology: true,
 };
 
-const getData = async () => {
-  const data = await fetch(
-    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
-  );
+// const getData = async () => {
+//   const data = await fetch(
+//     "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
+//   );
 
-  const result = await data.json();
-  console.log(result);
-};
+//   const result = await data.json();
+//   console.log(result);
+// };
 
 const dbFunction = async () => {
   // creates a new client
@@ -27,13 +27,11 @@ const dbFunction = async () => {
   const db = client.db("Project");
   console.log("connected!");
 
-  await db
-    .collection("Drinks")
-    .insertOne({ name: "Rakin Bhuiyan", _id: "123" });
+  await db.collection("Games").insertOne({ _id: "1", game: "Beer Pong" });
   // close the connection to the database server
   client.close();
   console.log("disconnected!");
 };
 
 // dbFunction();
-getData();
+dbFunction();
