@@ -1,15 +1,38 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { NightContext } from "./NightContext";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
+  const [signIn, setSignIn] = useState({ email: "", password: "" });
+
+  const handleSubmit = async () => {
+    await fetch("/api/signin/getUser", {
+      method: "POST",
+      body: JSON.stringify(signIn),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log("it worked");
+  };
   return (
     <Container>
-      <Form>
-        <Input placeholder="email" type="email" />
-        <Input placeholder="password" type="password" />
-        <button>Submit</button>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          placeholder="email"
+          type="email"
+          onChange={(e) => {
+            setSignIn({ ...signIn, email: e.target.value });
+          }}
+        />
+        <Input
+          placeholder="password"
+          type="password"
+          onChange={(e) => {
+            setSignIn({ ...signIn, password: e.target.value });
+          }}
+        />
+        <button type="submit">Submit</button>
       </Form>
     </Container>
   );

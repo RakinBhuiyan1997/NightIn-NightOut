@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { NightContext } from "./NightContext";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const { addUser, setAddUser, currentUser, setCurrentUser } =
     useContext(NightContext);
+  let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetch("/api/signup/adduser", {
@@ -15,6 +17,8 @@ const SignUp = () => {
       },
       body: JSON.stringify(addUser),
     });
+    await setCurrentUser(addUser);
+    navigate("/selection");
   };
   console.log(addUser);
   return (

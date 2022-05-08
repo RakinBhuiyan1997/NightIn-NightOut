@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 const mongoose = require("mongoose");
 const CreateUser = require("./userAdd");
-const { MongoClient } = require("mongodb");
+const { MongoClient, Db } = require("mongodb");
 require("dotenv").config({ path: "../.env" });
 const { MONGO_URI } = process.env;
 console.log(MONGO_URI);
@@ -33,6 +33,20 @@ const addUser = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+const getUser = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { email, password } = req.body;
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db.collection("users").findOne({
+      email,
+      password,
+    });
+  } catch (err) {}
 };
 
 const getDrinkCategories = async (req, res) => {
@@ -79,6 +93,7 @@ const getDrinkRecepie = async (req, res) => {
 
 module.exports = {
   addUser,
+  getUser,
   getDrinkCategories,
   getCategoryDrinks,
   getDrinkRecepie,
