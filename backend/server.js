@@ -10,6 +10,7 @@ const {
   getCategoryDrinks,
   getDrinkRecepie,
   getUser,
+  getGames,
 } = require("./handlers");
 
 express()
@@ -27,11 +28,11 @@ express()
   // ---------------------------------
   // add new endpoints here 👇
   .post("/api/signUp/adduser", addUser)
+  .post("/api/signin/getUser", getUser)
   .get("/api/drinks/categories", getDrinkCategories)
   .get("/api/drinks/categories/:id", getCategoryDrinks)
   .get("/api/drinks/drink/:id", getDrinkRecepie)
-  .post("/api/signin/getUser", getUser)
-  //
+  .get("/api/games", getGames)
   // add new endpoints here ☝️
   // ---------------------------------
   // Nothing to modify below this line

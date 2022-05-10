@@ -1,5 +1,7 @@
 const { MongoClient } = require("mongodb");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
+//Might require a pathway if it doesnt work
+const data = require("./data.json");
 const { MONGO_URI } = process.env;
 console.log(MONGO_URI);
 
@@ -27,7 +29,7 @@ const dbFunction = async () => {
   const db = client.db("Project");
   console.log("connected!");
 
-  await db.collection("Games").insertOne({ _id: "1", game: "Beer Pong" });
+  await db.collection("Games").insertMany(data);
   // close the connection to the database server
   client.close();
   console.log("disconnected!");

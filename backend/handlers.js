@@ -90,6 +90,27 @@ const getDrinkRecepie = async (req, res) => {
     console.log(err);
   }
 };
+const getGames = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+
+  const db = client.db("Project");
+  const result = await db.collection("Games").find().toArray();
+
+  if (result.length > 0) {
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Successfully retrieved all games",
+    });
+  } else {
+    res.status(404).json({
+      status: 404,
+      message: "Could not retrieve games",
+    });
+  }
+};
 
 module.exports = {
   addUser,
@@ -97,4 +118,5 @@ module.exports = {
   getDrinkCategories,
   getCategoryDrinks,
   getDrinkRecepie,
+  getGames,
 };
