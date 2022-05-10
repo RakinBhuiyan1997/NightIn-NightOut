@@ -46,7 +46,13 @@ const getUser = async (req, res) => {
       email,
       password,
     });
-  } catch (err) {}
+
+    console.log(result);
+    res.status(200).json({ status: 200, data: result, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
 };
 
 const getDrinkCategories = async (req, res) => {

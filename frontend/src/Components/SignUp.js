@@ -7,9 +7,10 @@ const SignUp = () => {
   const { addUser, setAddUser, currentUser, setCurrentUser } =
     useContext(NightContext);
   let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("/api/signup/adduser", {
+    const addPerson = await fetch("/api/signup/adduser", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -17,10 +18,15 @@ const SignUp = () => {
       },
       body: JSON.stringify(addUser),
     });
-    await setCurrentUser(addUser);
-    navigate("/selection");
+
+    const response = await addPerson.json();
+    console.log(response);
+    setCurrentUser(response.data);
+
+    // navigate("/selection");
   };
   console.log(addUser);
+  console.log(currentUser);
   return (
     <Container>
       <Form onSubmit={handleSubmit}>

@@ -6,15 +6,25 @@ import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
   const [signIn, setSignIn] = useState({ email: "", password: "" });
+  console.log(signIn);
 
-  const handleSubmit = async () => {
-    await fetch("/api/signin/getUser", {
+  let navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("test");
+    const findUser = await fetch("/api/signin/getUser", {
       method: "POST",
       body: JSON.stringify(signIn),
       headers: { "Content-Type": "application/json" },
     });
-    console.log("it worked");
+
+    const result = await findUser.json();
+    setCurrentUser(result.data);
+
+    navigate("/selection");
   };
+  console.log(currentUser);
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
