@@ -3,11 +3,15 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Loading from "./Loading";
+import FavoriteButton from "./FavoriteButton";
+import { NightContext } from "./NightContext";
 
 const DrinkRecepie = () => {
   const { id } = useParams();
+  const { currentUser } = useContext(NightContext);
   const [ingredients, setIngredients] = useState({});
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch(`/api/drinks/drink/${id}`)
       .then((res) => {
@@ -31,13 +35,27 @@ const DrinkRecepie = () => {
       arr.push(ingredients[key]);
     }
   });
-  console.log(ingredients);
 
   Object.keys(ingredients).forEach((key) => {
     if (key.includes("strMeasure")) {
       int.push(ingredients[key]);
     }
   });
+
+  const addDrink = async (e) => {
+    e.preventDefault();
+    const drink = await fetch("/api/user/favorites/addDrink", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ingredients: ingredients,
+        currentUser: currentUser,
+      }),
+    });
+  };
 
   return (
     <>
@@ -66,6 +84,9 @@ const DrinkRecepie = () => {
               <h2>Instructions</h2>
               <p>{ingredients.strInstructions}</p>
             </Receipe>
+            <p>
+              Favorite this drink! <FavoriteButton handleClick={addDrink} />
+            </p>
           </Card>
         </Container>
       )}

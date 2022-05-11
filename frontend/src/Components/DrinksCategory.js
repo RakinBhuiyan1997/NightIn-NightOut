@@ -28,12 +28,13 @@ const DrinksCategory = () => {
             <h1>What you gonna whip up tonight?</h1>
             {drinks.map((val) => {
               return (
-                <StyledLink to={`/nightin/drinks/drink/${val.idDrink}`}>
-                  <Card>
+                <Card>
+                  <StyledLink to={`/nightin/drinks/drink/${val.idDrink}`}>
                     <Image src={val.strDrinkThumb} alt={val.strDrink} />
+
                     <h4>{val.strDrink}</h4>
-                  </Card>
-                </StyledLink>
+                  </StyledLink>
+                </Card>
               );
             })}
           </Container>

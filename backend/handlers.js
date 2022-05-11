@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 const mongoose = require("mongoose");
 const CreateUser = require("./userAdd");
-const { MongoClient, Db } = require("mongodb");
+const { MongoClient, Db, ObjectId } = require("mongodb");
 require("dotenv").config({ path: "../.env" });
 const { MONGO_URI } = process.env;
 console.log(MONGO_URI);
@@ -118,6 +118,32 @@ const getGames = async (req, res) => {
   }
 };
 
+const addFavoriteDrink = async (req, res) => {
+  const { ingredients, currentUser } = req.body;
+
+  const client = await new MongoClient(MONGO_URI, options);
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $push: { favoriteDrinks: ingredients } }
+      );
+    // const result = await db
+    //   .collection("users")
+    //   .findOne({ firstName: currentUser.firstName });
+
+    console.log(result);
+    res.status(200).json({ status: 200, data: result, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
 module.exports = {
   addUser,
   getUser,
@@ -125,4 +151,5 @@ module.exports = {
   getCategoryDrinks,
   getDrinkRecepie,
   getGames,
+  addFavoriteDrink,
 };

@@ -8,9 +8,11 @@ const Games = () => {
   useEffect(() => {
     fetch("http://localhost:8000/api/games")
       .then((res) => {
-        return res.json;
+        return res.json();
       })
-      .then((data) => {});
+      .then((data) => {
+        console.log(data);
+      });
   }, []);
 
   return (

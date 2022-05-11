@@ -1,6 +1,7 @@
 "use strict";
 
 // import the needed node_modules.
+const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -11,9 +12,11 @@ const {
   getDrinkRecepie,
   getUser,
   getGames,
+  addFavoriteDrink,
 } = require("./handlers");
 
 express()
+  .use(cors({ origin: "*" }))
   // Below are methods that are included in express(). We chain them for convenience.
   // --------------------------------------------------------------------------------
 
@@ -29,6 +32,7 @@ express()
   // add new endpoints here 👇
   .post("/api/signUp/adduser", addUser)
   .post("/api/signin/getUser", getUser)
+  .post("/api/user/favorites/addDrink", addFavoriteDrink)
   .get("/api/drinks/categories", getDrinkCategories)
   .get("/api/drinks/categories/:id", getCategoryDrinks)
   .get("/api/drinks/drink/:id", getDrinkRecepie)

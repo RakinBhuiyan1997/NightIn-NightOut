@@ -10,9 +10,11 @@
     "dotenv": "^16.0.0",
     "framer-motion": "^6.3.3",
     "http-proxy-middleware": "^2.0.6",
+    "icons": "^1.0.0",
     "keyframes": "^2.3.0",
-    "react": "^18.0.0",
+    "react": "^18.1.0",
     "react-dom": "^18.0.0",
+    "react-icons": "^4.3.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "strict": "^0.0.0"

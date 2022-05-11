@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
   const [signIn, setSignIn] = useState({ email: "", password: "" });
-  console.log(signIn);
 
   let navigate = useNavigate();
 
