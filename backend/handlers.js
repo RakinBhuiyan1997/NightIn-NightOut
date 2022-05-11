@@ -132,9 +132,29 @@ const addFavoriteDrink = async (req, res) => {
         { _id: ObjectId(currentUser._id) },
         { $push: { favoriteDrinks: ingredients } }
       );
-    // const result = await db
-    //   .collection("users")
-    //   .findOne({ firstName: currentUser.firstName });
+
+    console.log(result);
+    res.status(200).json({ status: 200, data: result, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
+const addFavoriteGame = async (req, res) => {
+  const { game, currentUser } = req.body;
+
+  const client = await new MongoClient(MONGO_URI, options);
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $push: { favoriteGames: ingredients } }
+      );
 
     console.log(result);
     res.status(200).json({ status: 200, data: result, message: "Success" });
@@ -152,4 +172,5 @@ module.exports = {
   getDrinkRecepie,
   getGames,
   addFavoriteDrink,
+  addFavoriteGame,
 };

@@ -10,7 +10,7 @@ const NightIn = () => {
           <p>Drinks</p>
         </Drinks>
       </StyledLink>
-      <StyledLink to="nightin/games">
+      <StyledLink to="/nightin/games">
         <Games>
           <p>Games</p>
         </Games>
