@@ -9,6 +9,10 @@ import Drinks from "./Components/Drinks";
 import DrinksCategory from "./Components/DrinksCategory";
 import DrinkRecepie from "./Components/DrinkRecepie";
 import Games from "./Components/Games";
+import CreateSelection from "./Components/CreateSelection";
+import CreateDrink from "./Components/CreateDrink";
+import CreateGame from "./Components/CreateGame";
+import Profile from "./Components/Profile";
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
         <Route path="/nightin/drinks/:id" element={<DrinksCategory />} />
         <Route path="/nightin/drinks/drink/:id" element={<DrinkRecepie />} />
         <Route path="/nightin/games" element={<Games />} />
+        <Route path="/nightin/create" element={<CreateSelection />} />
+        <Route path="/nightin/create/drink" element={<CreateDrink />} />
+        <Route path="/nightin/create/game" element={<CreateGame />} />
+        <Route path="/profile" elemen={<Profile />} />
       </Routes>
     </Router>
   );

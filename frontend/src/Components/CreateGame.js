@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-const CreateDrink = () => {
-  const [createDrink, setCreateDrink] = useState({
-    _id: "",
-    drink_name: "",
-    alcoholic: "",
-    ingredients: [],
+const CreateGame = () => {
+  const [createGame, setCreateGame] = useState({
+    game_name: "",
+    players: "",
+    items: [],
     instructions: "",
   });
 
@@ -22,7 +21,7 @@ const CreateDrink = () => {
           placeholder="enter name here"
           type="text"
           onChange={(e) => {
-            setCreateDrink({ ...createDrink, game_name: e.target.value });
+            setCreateGame({ ...createGame, game_name: e.target.value });
           }}
         />
         <label>Ingredients</label>
@@ -46,11 +45,11 @@ const CreateDrink = () => {
           placeholder="write intructions here"
           type="textarea"
           onChange={(e) => {
-            setCreateDrink({ ...createDrink, instructions: e.target.value });
+            setCreateGame({ ...createGame, instructions: e.target.value });
           }}
         />
 
-        <button type="submit">Create Drink!</button>
+        <button type="submit">Create Game!</button>
       </Form>
     </Container>
   );
@@ -59,4 +58,4 @@ const CreateDrink = () => {
 const Container = styled.div``;
 const Form = styled.form``;
 
-export default CreateDrink;
+export default CreateGame;

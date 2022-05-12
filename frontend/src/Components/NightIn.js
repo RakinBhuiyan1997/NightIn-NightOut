@@ -15,12 +15,12 @@ const NightIn = () => {
           <p>Games</p>
         </Games>
       </StyledLink>
-      <StyledLink to="nightin/favorites">
+      <StyledLink to="/nightin/favorites">
         <Favorites>
           <p>Favorites</p>
         </Favorites>
       </StyledLink>
-      <StyledLink to="nightin/create">
+      <StyledLink to="/nightin/create">
         <Create>
           <p>Create</p>
         </Create>

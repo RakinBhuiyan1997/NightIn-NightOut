@@ -56,7 +56,7 @@ const DrinkRecepie = () => {
       }),
     });
   };
-
+  console.log(ingredients);
   return (
     <>
       {loading === true && <Loading />}
