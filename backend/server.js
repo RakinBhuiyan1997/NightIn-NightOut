@@ -14,6 +14,7 @@ const {
   getGames,
   addFavoriteDrink,
   addFavoriteGame,
+  addCreatedGame,
 } = require("./handlers");
 
 express()
@@ -35,6 +36,7 @@ express()
   .post("/api/signin/getUser", getUser)
   .post("/api/user/favorites/addDrink", addFavoriteDrink)
   .post("/api/user/favorites/addGame", addFavoriteGame)
+  .post("/api/games/addCreatedGame", addCreatedGame)
   .get("/api/drinks/categories", getDrinkCategories)
   .get("/api/drinks/categories/:id", getCategoryDrinks)
   .get("/api/drinks/drink/:id", getDrinkRecepie)

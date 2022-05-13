@@ -9,48 +9,46 @@ const CreateDrink = () => {
     ingredients: [],
     instructions: "",
   });
+  const [userInput, setUserInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
+  const addItem = (e) => {
+    e.preventDeafult();
+
+    let arr = createDrink.ingredients;
+    arr.push(userInput);
+    setCreateDrink({ ...createDrink, ingredients: arr });
+    setUserInput("");
+  };
+
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
-        <label>Name of the Drink</label>
-        <input
-          placeholder="enter name here"
-          type="text"
-          onChange={(e) => {
-            setCreateDrink({ ...createDrink, game_name: e.target.value });
-          }}
-        />
-        <label>Ingredients</label>
-        <ul>
-          <li>
-            <input placeholder="ingredient 1" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 2" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 3" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 4" type="text" />{" "}
-          </li>
-        </ul>
-
-        <label>Instructions</label>
-        <input
-          placeholder="write intructions here"
-          type="textarea"
-          onChange={(e) => {
-            setCreateDrink({ ...createDrink, instructions: e.target.value });
-          }}
-        />
-
-        <button type="submit">Create Drink!</button>
+      <Form>
+        <label>Enter drink name</label>
+        <input placeholder="drink name" type="text" />
+        <label>Alcoholic?</label>
+        <select name="choice" id="choose">
+          <option value={true}>yes</option>
+          <option value={false}>no</option>
+        </select>
+        <div>
+          <label>Add list of ingredients needed!</label>
+          <input
+            placeholder="enter item here"
+            type="text"
+            value={userInput}
+            onChange={(e) => {
+              setUserInput(e.target.value);
+            }}
+          />
+          <button onClick={addItem}>Add item</button>
+        </div>
+        <label>Instructions to make the drink</label>
+        <input placeholder="instructions here" type="text" />
+        <button>Create Drink!</button>
       </Form>
     </Container>
   );

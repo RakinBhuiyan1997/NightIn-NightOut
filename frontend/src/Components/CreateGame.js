@@ -1,22 +1,44 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-
+import { NightContext } from "./NightContext";
+import { useNavigate } from "react-router-dom";
 const CreateGame = () => {
+  const { currentUser } = useContext(NightContext);
   const [createGame, setCreateGame] = useState({
     game_name: "",
     players: "",
     items: [],
     instructions: "",
+    createdBy: currentUser.firstName,
   });
+  const [userInput, setUserInput] = useState("");
+  console.log(currentUser);
 
-  const handleSubmit = (e) => {
+  let navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const addGame = await fetch("/api/games/addCreatedGame", {
+      method: "POST",
+      body: JSON.stringify(createGame),
+      headers: { "Content-Type": "application/json" },
+    });
+    navigate("/nightin/games");
   };
+
+  const addItem = (e) => {
+    e.preventDefault();
+    let arr = createGame.items;
+    arr.push(userInput);
+    setCreateGame({ ...createGame, items: arr });
+    setUserInput("");
+  };
+  console.log(createGame);
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <label>Name of the Drink</label>
+        <label>Name of the Game</label>
         <input
           placeholder="enter name here"
           type="text"
@@ -24,31 +46,35 @@ const CreateGame = () => {
             setCreateGame({ ...createGame, game_name: e.target.value });
           }}
         />
-        <label>Ingredients</label>
-        <ul>
-          <li>
-            <input placeholder="ingredient 1" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 2" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 3" type="text" />{" "}
-          </li>
-          <li>
-            <input placeholder="ingredient 4" type="text" />{" "}
-          </li>
-        </ul>
-
-        <label>Instructions</label>
+        <label>How many players</label>
         <input
-          placeholder="write intructions here"
+          placeholder="enter players here"
+          type="text"
+          onChange={(e) => {
+            setCreateGame({ ...createGame, players: e.target.value });
+          }}
+        />
+        <div>
+          <label>Add list of items needed!</label>
+          <input
+            placeholder="enter item here"
+            type="text"
+            onChange={(e) => {
+              setUserInput(e.target.value);
+            }}
+            value={userInput}
+          />
+          <button onClick={addItem}>Add item</button>
+        </div>
+
+        <label>How to play</label>
+        <input
+          placeholder="write instructions"
           type="textarea"
           onChange={(e) => {
             setCreateGame({ ...createGame, instructions: e.target.value });
           }}
         />
-
         <button type="submit">Create Game!</button>
       </Form>
     </Container>
@@ -56,6 +82,10 @@ const CreateGame = () => {
 };
 
 const Container = styled.div``;
-const Form = styled.form``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default CreateGame;
