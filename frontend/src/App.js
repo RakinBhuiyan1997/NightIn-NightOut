@@ -12,11 +12,13 @@ import Games from "./Components/Games";
 import CreateSelection from "./Components/CreateSelection";
 import CreateDrink from "./Components/CreateDrink";
 import CreateGame from "./Components/CreateGame";
-import Profile from "./Components/Profile";
+import Profile from "./Components/UserInteraction/Profile";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SignIn />} />
@@ -30,7 +32,8 @@ function App() {
         <Route path="/nightin/create" element={<CreateSelection />} />
         <Route path="/nightin/create/drink" element={<CreateDrink />} />
         <Route path="/nightin/create/game" element={<CreateGame />} />
-        <Route path="/profile" elemen={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/users" />
       </Routes>
     </Router>
   );

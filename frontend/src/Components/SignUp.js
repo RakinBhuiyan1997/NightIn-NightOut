@@ -23,7 +23,7 @@ const SignUp = () => {
     console.log(response);
     setCurrentUser(response.data);
 
-    // navigate("/selection");
+    navigate("/selection");
   };
   console.log(addUser);
   console.log(currentUser);

@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { NightContext } from "./NightContext";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 const Selection = () => {
   const { currentUser } = useContext(NightContext);
 
   return (
     <Container>
-      <Question>Whats the vibe tonight?</Question>
+      <Question>Choose the vibe</Question>
       <StyledLink to="/nightin">
         <Button>Night In</Button>
       </StyledLink>
@@ -113,7 +114,7 @@ const Button = styled.button`
 const Question = styled.p`
   font-size: 30px;
   text-align: center;
-  position: absolute;
+  position: relative;
   top: 10%;
 `;
 
