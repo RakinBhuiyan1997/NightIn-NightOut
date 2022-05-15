@@ -49,7 +49,7 @@ const Header = () => {
 };
 
 const Container = styled.div`
-  background-color: blue;
+  /* background-color: transparent; */
 `;
 const Button = styled.button``;
 

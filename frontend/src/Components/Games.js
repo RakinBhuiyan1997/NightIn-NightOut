@@ -21,22 +21,18 @@ const Games = () => {
       });
   }, []);
 
-  const saveGame = async (e) => {
+  const saveGame = async (e, gameVal) => {
     e.preventDefault();
-    // const game = await fetch("/api/user/favorites/addDrink", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     ingredients: ingredients,
-    //     currentUser: currentUser,
-    //   }),
-    // });
-    console.log(e.target.value);
+    const game = await fetch("/api/user/favorites/addGame", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ game: gameVal, currentUser }),
+    });
   };
-
+  console.log(currentUser);
   return (
     <Container>
       {loading === true && <Loading />}
@@ -60,7 +56,8 @@ const Games = () => {
                   </h3>
                   <p>Instructions: {val.instructions}</p>
                   <p>
-                    Save this game: <FavoriteButton />
+                    Save this game:{" "}
+                    <FavoriteButton handleClick={(e) => saveGame(e, val)} />
                   </p>
                 </div>
               );

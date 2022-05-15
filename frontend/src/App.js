@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./Components/Homepage";
 import SignIn from "./Components/SignIn";
@@ -18,25 +19,45 @@ import Header from "./Components/Header";
 function App() {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/selection" element={<Selection />} />
-        <Route path="/nightin" element={<NightIn />} />
-        <Route path="/nightin/drinks" element={<Drinks />} />
-        <Route path="/nightin/drinks/:id" element={<DrinksCategory />} />
-        <Route path="/nightin/drinks/drink/:id" element={<DrinkRecepie />} />
-        <Route path="/nightin/games" element={<Games />} />
-        <Route path="/nightin/create" element={<CreateSelection />} />
-        <Route path="/nightin/create/drink" element={<CreateDrink />} />
-        <Route path="/nightin/create/game" element={<CreateGame />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/users" />
-      </Routes>
+      <Container>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/selection" element={<Selection />} />
+          <Route path="/nightin" element={<NightIn />} />
+          <Route path="/nightin/drinks" element={<Drinks />} />
+          <Route path="/nightin/drinks/:id" element={<DrinksCategory />} />
+          <Route path="/nightin/drinks/drink/:id" element={<DrinkRecepie />} />
+          <Route path="/nightin/games" element={<Games />} />
+          <Route path="/nightin/create" element={<CreateSelection />} />
+          <Route path="/nightin/create/drink" element={<CreateDrink />} />
+          <Route path="/nightin/create/game" element={<CreateGame />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/users" />
+        </Routes>
+      </Container>
     </Router>
   );
 }
+
+const Container = styled.div`
+  background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100%;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
 
 export default App;

@@ -68,9 +68,8 @@ const CreateGame = () => {
         </div>
 
         <label>How to play</label>
-        <input
+        <textarea
           placeholder="write instructions"
-          type="textarea"
           onChange={(e) => {
             setCreateGame({ ...createGame, instructions: e.target.value });
           }}
