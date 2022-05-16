@@ -17,6 +17,7 @@ const {
   addCreatedGame,
   addCreatedDrink,
   getUsers,
+  findUser,
 } = require("./handlers");
 
 express()
@@ -45,6 +46,7 @@ express()
   .get("/api/drinks/drink/:id", getDrinkRecepie)
   .get("/api/games", getGames)
   .get("/api/users", getUsers)
+  .get("/api/users/:id", findUser)
   // add new endpoints here ☝️
   // ---------------------------------
   // Nothing to modify below this line

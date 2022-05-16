@@ -17,7 +17,8 @@ const Profile = () => {
   };
 
   const goToSelection = (e) => {
-    e.preventDefault(navigate("/selection"));
+    e.preventDefault();
+    navigate("/selection");
   };
 
   return (

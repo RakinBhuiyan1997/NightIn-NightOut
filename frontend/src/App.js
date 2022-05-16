@@ -16,6 +16,7 @@ import CreateGame from "./Components/CreateGame";
 import Profile from "./Components/UserInteraction/Profile";
 import Header from "./Components/Header";
 import Users from "./Components/UserInteraction/Users";
+import UserProfile from "./Components/UserInteraction/UserProfile";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/nightin/create/game" element={<CreateGame />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/userprofile/:_id" element={<UserProfile />} />
         </Routes>
       </Container>
     </Router>
@@ -47,7 +49,7 @@ const Container = styled.div`
   background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100%;
+  height: 100vh;
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
