@@ -20,10 +20,38 @@ const UserProfile = () => {
       });
   }, []);
 
-  const handleClick = async (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     setText("Friends");
+    const addFriend = await fetch("/api/users/friends/addFriends", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        friend: userInfo.firstName,
+        currentUser: currentUser,
+      }),
+    });
   };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    setText("Add Friend");
+    const addFriend = await fetch("/api/users/friends/deleteFriend", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        friend: userInfo.firstName,
+        currentUser: currentUser,
+      }),
+    });
+  };
+
   return (
     <div>
       {loading === true && <Loading />}
@@ -53,7 +81,15 @@ const UserProfile = () => {
           </h4>
 
           <div>
-            <button onClick={handleClick}>{text}</button>
+            <button
+              onClick={(e) => {
+                text === "Add Friend"
+                  ? handleAdd(e, userInfo)
+                  : handleDelete(e, userInfo);
+              }}
+            >
+              {text}
+            </button>
           </div>
         </div>
       )}

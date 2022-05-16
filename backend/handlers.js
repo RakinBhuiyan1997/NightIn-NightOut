@@ -226,6 +226,48 @@ const findUser = async (req, res) => {
   console.log("disconnected");
 };
 
+const addFriend = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { friend, currentUser } = req.body;
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $push: { friends: friend } }
+      );
+    console.log(result);
+    res.status(200).json({ status: 200, data: result, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
+const deleteFriend = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { friend, currentUser } = req.body;
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $pull: { friends: friend } }
+      );
+    console.log(result);
+    res.status(200).json({ status: 200, data: result, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
 module.exports = {
   addUser,
   getUser,
@@ -239,4 +281,6 @@ module.exports = {
   addCreatedGame,
   addCreatedDrink,
   findUser,
+  addFriend,
+  deleteFriend,
 };

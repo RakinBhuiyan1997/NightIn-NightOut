@@ -27,7 +27,7 @@ const Profile = () => {
       <Box>
         <p>
           Friends:{" "}
-          {currentUser.friends.length > 1 ? (
+          {currentUser.friends.length > 0 ? (
             currentUser.friends.map((val) => {
               return val;
             })
