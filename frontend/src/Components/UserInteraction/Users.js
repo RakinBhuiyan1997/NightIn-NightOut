@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = true;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/users")
@@ -18,3 +18,5 @@ const Users = () => {
       });
   }, []);
 };
+
+export default Users;

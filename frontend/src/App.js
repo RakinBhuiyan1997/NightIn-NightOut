@@ -15,6 +15,7 @@ import CreateDrink from "./Components/CreateDrink";
 import CreateGame from "./Components/CreateGame";
 import Profile from "./Components/UserInteraction/Profile";
 import Header from "./Components/Header";
+import Users from "./Components/UserInteraction/Users";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
           <Route path="/nightin/create/drink" element={<CreateDrink />} />
           <Route path="/nightin/create/game" element={<CreateGame />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/users" />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Container>
     </Router>
