@@ -7,10 +7,10 @@ import { NightContext } from "./NightContext";
 
 const DrinkRecepie = () => {
   const { id } = useParams();
-  const { currentUser } = useContext(NightContext);
+  const { currentUser, setCurrentUser } = useContext(NightContext);
   const [ingredients, setIngredients] = useState({});
   const [loading, setLoading] = useState(true);
-
+  console.log(currentUser);
   useEffect(() => {
     fetch(`/api/drinks/drink/${id}`)
       .then((res) => {
@@ -52,7 +52,14 @@ const DrinkRecepie = () => {
         ingredients: ingredients,
         currentUser: currentUser,
       }),
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        setCurrentUser(data.data);
+      });
   };
 
   const removeDrink = async () => {
@@ -66,13 +73,20 @@ const DrinkRecepie = () => {
         ingredients: ingredients,
         currentUser: currentUser,
       }),
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        setCurrentUser(data.data);
+      });
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     const isFavorite = currentUser.favoriteDrinks.some(
-      (val) => val._id === ingredients._id
+      (val) => val.idDrink === ingredients.idDrink
     );
     console.log("this is the drink data", ingredients);
     console.log("this is the favorite boolean data", isFavorite);
@@ -84,8 +98,13 @@ const DrinkRecepie = () => {
   };
 
   const isFavorited = currentUser?.favoriteDrinks?.some(
-    (x) => x._id === ingredients._id
+    (x) => x.idDrink === ingredients.idDrink
   );
+  console.log({
+    isFavorited,
+    currentUser,
+    ingredients,
+  });
 
   console.log("This is to check if it is in the array", isFavorited);
 

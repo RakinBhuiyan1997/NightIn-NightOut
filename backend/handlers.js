@@ -132,9 +132,13 @@ const addFavoriteDrink = async (req, res) => {
         { _id: ObjectId(currentUser._id) },
         { $push: { favoriteDrinks: ingredients } }
       );
-
+    const getUpdatedUser = await await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
     console.log(result);
-    res.status(200).json({ status: 200, data: result, message: "Success" });
+    res
+      .status(200)
+      .json({ status: 200, data: getUpdatedUser, message: "Success" });
   } catch (err) {
     console.log(err);
   }
@@ -314,7 +318,7 @@ const deleteDrink = async (req, res) => {
         { _id: ObjectId(currentUser._id) },
         { $pull: { favoriteDrinks: ingredients } }
       );
-    console.log(result);
+
     const getUpdatedUser = await await db
       .collection("users")
       .findOne({ _id: ObjectId(currentUser._id) });
