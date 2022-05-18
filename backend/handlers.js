@@ -302,7 +302,7 @@ const deleteGame = async (req, res) => {
 
 const deleteDrink = async (req, res) => {
   const client = await new MongoClient(MONGO_URI, options);
-  const { drink, currentUser } = req.body;
+  const { ingredients, currentUser } = req.body;
   console.log(req.body);
   try {
     await client.connect();
@@ -312,7 +312,7 @@ const deleteDrink = async (req, res) => {
       .collection("users")
       .updateOne(
         { _id: ObjectId(currentUser._id) },
-        { $pull: { favoriteDrinks: drink } }
+        { $pull: { favoriteDrinks: ingredients } }
       );
     console.log(result);
     const getUpdatedUser = await await db

@@ -41,8 +41,7 @@ const DrinkRecepie = () => {
     }
   });
 
-  const addDrink = async (e) => {
-    e.preventDefault();
+  const addDrink = async () => {
     const drink = await fetch("/api/user/favorites/addDrink", {
       method: "POST",
       headers: {
@@ -55,11 +54,46 @@ const DrinkRecepie = () => {
       }),
     });
   };
+
+  const removeDrink = async () => {
+    const drink = await fetch("/api/users/favorites/deleteDrink", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ingredients: ingredients,
+        currentUser: currentUser,
+      }),
+    });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const isFavorite = currentUser.favoriteDrinks.some(
+      (val) => val._id === ingredients._id
+    );
+    console.log("this is the drink data", ingredients);
+    console.log("this is the favorite boolean data", isFavorite);
+    if (isFavorite) {
+      removeDrink();
+      return;
+    }
+    addDrink();
+  };
+
+  const isFavorited = currentUser?.favoriteDrinks?.some(
+    (x) => x._id === ingredients._id
+  );
+
+  console.log("This is to check if it is in the array", isFavorited);
+
   console.log(ingredients);
   return (
     <>
-      {loading === true && <Loading />}
-      {loading === false && (
+      {loading && <Loading />}
+      {!loading && (
         <Container>
           <Card>
             <Image src={ingredients.strDrinkThumb} alt="drink image" />
@@ -84,7 +118,11 @@ const DrinkRecepie = () => {
               <p>{ingredients.strInstructions}</p>
             </Receipe>
             <p>
-              Favorite this drink! <FavoriteButton handleClick={addDrink} />
+              Favorite this drink!{" "}
+              <FavoriteButton
+                handleClick={handleClick}
+                isFavorited={isFavorited}
+              />
             </p>
           </Card>
         </Container>
