@@ -3,15 +3,11 @@ import styled from "styled-components";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 //This is the favorite button component.
-const FavoriteButton = ({ handleClick }) => {
-  const [liked, setLiked] = useState(false);
+const FavoriteButton = ({ handleClick, isFavorited }) => {
+  const [liked, setLiked] = useState(isFavorited || false);
 
   const like = (e) => {
-    if (liked === false) {
-      setLiked(true);
-    } else {
-      setLiked(false);
-    }
+    setLiked(!liked);
     handleClick(e);
   };
   return (

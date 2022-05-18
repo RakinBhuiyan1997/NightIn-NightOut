@@ -20,6 +20,8 @@ const {
   findUser,
   addFriend,
   deleteFriend,
+  deleteGame,
+  deleteDrink,
 } = require("./handlers");
 
 express()
@@ -45,6 +47,8 @@ express()
   .post("/api/drinks/addCreatedDrink", addCreatedDrink)
   .post("/api/users/friends/addFriends", addFriend)
   .delete("/api/users/friends/deleteFriend", deleteFriend)
+  .delete("/api/users/favorites/deleteGame", deleteGame)
+  .delete("/api/users/favorites/deleteDrink", deleteDrink)
   .get("/api/drinks/categories", getDrinkCategories)
   .get("/api/drinks/categories/:id", getCategoryDrinks)
   .get("/api/drinks/drink/:id", getDrinkRecepie)

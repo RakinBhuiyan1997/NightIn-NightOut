@@ -156,7 +156,12 @@ const addFavoriteGame = async (req, res) => {
         { $push: { favoriteGames: game } }
       );
     console.log(result);
-    res.status(200).json({ status: 200, data: result, message: "Success" });
+    const getUpdatedUser = await await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
+    res
+      .status(200)
+      .json({ status: 200, data: getUpdatedUser, message: "Success" });
   } catch (err) {
     console.log(err);
   }
@@ -268,6 +273,60 @@ const deleteFriend = async (req, res) => {
   console.log("disconnected");
 };
 
+const deleteGame = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { game, currentUser } = req.body;
+  console.log(req.body);
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $pull: { favoriteGames: game } }
+      );
+    console.log(result);
+    const getUpdatedUser = await await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
+    res
+      .status(200)
+      .json({ status: 200, data: getUpdatedUser, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
+const deleteDrink = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { drink, currentUser } = req.body;
+  console.log(req.body);
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .updateOne(
+        { _id: ObjectId(currentUser._id) },
+        { $pull: { favoriteDrinks: drink } }
+      );
+    console.log(result);
+    const getUpdatedUser = await await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
+    res
+      .status(200)
+      .json({ status: 200, data: getUpdatedUser, message: "Success" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
 module.exports = {
   addUser,
   getUser,
@@ -283,4 +342,6 @@ module.exports = {
   findUser,
   addFriend,
   deleteFriend,
+  deleteGame,
+  deleteDrink,
 };

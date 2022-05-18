@@ -20,26 +20,72 @@ const Games = () => {
         setLoading(false);
       });
   }, []);
+  console.log("this is the current user", currentUser);
 
-  const saveGame = async (e, gameVal) => {
-    e.preventDefault();
-    const game = await fetch("/api/user/favorites/addGame", {
+  const saveGame = async (gameVal) => {
+    await fetch("http://localhost:8000/api/user/favorites/addGame", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ game: gameVal, currentUser }),
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        setCurrentUser(data.data);
+      });
+  };
+
+  const deleteGame = async (gameVal) => {
+    const game = await fetch(
+      "http://localhost:8000/api/users/favorites/deleteGame",
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ game: gameVal, currentUser }),
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+        setCurrentUser(data.data);
+      });
+  };
+
+  const handleClick = (e, game) => {
+    e.preventDefault();
+    const isFavorite = currentUser.favoriteGames.some(
+      (val) => val._id === game._id
+    );
+    console.log("this is the game data", game);
+    console.log("this is the favorite boolean data", isFavorite);
+    if (isFavorite) {
+      deleteGame(game);
+      return;
+    }
+    saveGame(game);
   };
   console.log(currentUser);
   return (
     <Container>
-      {loading === true && <Loading />}
-      {loading === false && (
+      {loading && <Loading />}
+      {!loading && (
         <Box>
           <Card>
             {games.map((val) => {
+              //?. shorthand ternary. If it has the value, continue, if it doesnt, it just stops.
+              const isFavorited = currentUser?.favoriteGames?.some(
+                (x) => x._id === val._id
+              );
               return (
                 <div key={val._id}>
                   <h2>Name: {val.game_name}</h2>
@@ -57,7 +103,10 @@ const Games = () => {
                   <p>Instructions: {val.instructions}</p>
                   <p>
                     Save this game:{" "}
-                    <FavoriteButton handleClick={(e) => saveGame(e, val)} />
+                    <FavoriteButton
+                      isFavorited={isFavorited}
+                      handleClick={(e) => handleClick(e, val)}
+                    />
                   </p>
                 </div>
               );
