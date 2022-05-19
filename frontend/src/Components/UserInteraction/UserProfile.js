@@ -53,11 +53,11 @@ const UserProfile = () => {
   };
 
   return (
-    <div>
+    <Container>
       {loading === true && <Loading />}
       {loading === false && (
         <div>
-          <h2>{userInfo.firstName}</h2>
+          <UserName>{userInfo.firstName}</UserName>
 
           <h4>
             Favorite Drinks:{" "}
@@ -81,7 +81,7 @@ const UserProfile = () => {
           </h4>
 
           <div>
-            <button
+            <Button
               onClick={(e) => {
                 text === "Add Friend"
                   ? handleAdd(e, userInfo)
@@ -89,12 +89,29 @@ const UserProfile = () => {
               }}
             >
               {text}
-            </button>
+            </Button>
           </div>
         </div>
       )}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+`;
+
+const UserName = styled.h1`
+  text-align: center;
+`;
+
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+`;
 
 export default UserProfile;

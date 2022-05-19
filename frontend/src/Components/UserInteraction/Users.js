@@ -27,7 +27,7 @@ const Users = () => {
 
   console.log(users);
   return (
-    <div>
+    <Container>
       {loading === true && <Loading />}
       {loading === false && (
         <div>
@@ -44,14 +44,31 @@ const Users = () => {
           })}
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 
-const Card = styled.div`
-  background-color: white;
+const Container = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 50px;
+  height: 100vh;
 `;
-const Name = styled.h4``;
+
+const Card = styled.div`
+  width: 125px;
+  height: 125px;
+  border: solid 5px black;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
+`;
+const Name = styled.h2`
+  margin-top: 45px;
+  text-transform: uppercase;
+`;
 const FavoriteDrinks = styled.div``;
 const FavoriteGames = styled.div``;
 

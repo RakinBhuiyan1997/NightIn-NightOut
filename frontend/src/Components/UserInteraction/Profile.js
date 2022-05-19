@@ -51,15 +51,35 @@ const Profile = () => {
               return val;
             })
           ) : (
-            <button onClick={goToGames}>Check out the games!</button>
+            <Button onClick={goToGames}>Check out the games!</Button>
           )}
         </p>
-        <button onClick={goToSelection}>Back to homepage</button>
+        <ButtonHomePage onClick={goToSelection}>
+          Back to homepage
+        </ButtonHomePage>
       </Box>
     </Container>
   );
 };
 
-const Container = styled.div``;
-const Box = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+  text-align: center;
+`;
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Button = styled.button`
+width: 150px;,
+height: 50px;
+margin-left: 25px;`;
+
+const ButtonHomePage = styled.button`
+  width: 150px;
+  height: 30px;
+  margin-top: 50px;
+`;
 export default Profile;

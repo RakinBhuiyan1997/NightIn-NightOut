@@ -18,19 +18,19 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 140px;
+  height: 100vh;
 `;
 
 const Button = styled.button`
   width: 220px;
   height: 30px;
+  margin-top: 80px;
 `;
 
 const Question = styled.p`
   color: whitesmoke;
   font-size: 30px;
   text-align: center;
-  position: relative;
-  top: 10%;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;

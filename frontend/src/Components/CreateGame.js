@@ -101,11 +101,11 @@ const Form = styled.form`
 
 const ButtonSubmit = styled.button`
   width: 200px;
-  height: 50px;
+  height: 100px;
 `;
 const Button = styled.button`
-  width: 100px;
-  height: 30px;
+  width: 200px;
+  height: 50px;
   margin-top: -20px;
   margin-bottom: 35px;
 `;

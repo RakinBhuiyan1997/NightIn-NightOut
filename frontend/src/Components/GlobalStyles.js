@@ -6,8 +6,6 @@ body{
 }
 button{
     font-family: 'Roboto Condensed', sans-serif;
-    width: 90px;
-  height: 100px;
   border: none;
   outline: none;
   margin-top: 20px;

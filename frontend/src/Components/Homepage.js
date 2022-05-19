@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
-    <div>
+    <Container>
       <TitleContainer>
         <NightIn>Night In</NightIn>
         <NightOut>Night Out</NightOut>
@@ -17,9 +17,13 @@ const HomePage = () => {
           <Button>Sign up</Button>
         </StyledLink>
       </ChoiceContainer>
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  height: 100vh;
+`;
 
 const TitleContainer = styled.div`
   flex-direction: column;
@@ -31,8 +35,7 @@ const ChoiceContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  bottom: 30%;
-  margin-top: 100px;
+  top: 20%;
 `;
 
 const NightIn = styled.p`
