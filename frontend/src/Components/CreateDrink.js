@@ -34,7 +34,7 @@ const CreateDrink = () => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <label>Enter drink name</label>
-        <input
+        <Input
           placeholder="drink name"
           type="text"
           onChange={(e) => {
@@ -53,33 +53,125 @@ const CreateDrink = () => {
           <option value={true}>yes</option>
           <option value={false}>no</option>
         </select>
-        <div>
-          <label>Add list of ingredients needed!</label>
-          <input
-            placeholder="enter item here"
-            type="text"
-            value={userInput}
-            onChange={(e) => {
-              setUserInput(e.target.value);
-            }}
-          />
-          <button onClick={addItem}>Add item</button>
-        </div>
+
+        <label>Add list of ingredients needed!</label>
+        <Input
+          placeholder="enter item here"
+          type="text"
+          value={userInput}
+          onChange={(e) => {
+            setUserInput(e.target.value);
+          }}
+        />
+        <Button onClick={addItem}>Add item</Button>
+
         <label>Instructions to make the drink</label>
-        <input
+        <Instructions
           placeholder="instructions here"
           type="text"
           onChange={(e) => {
             setCreateDrink({ ...createDrink, instructions: e.target.value });
           }}
         />
-        <button type="submit">Create Drink!</button>
+        <ButtonSubmit type="submit">Create Drink!</ButtonSubmit>
       </Form>
     </Container>
   );
 };
 
-const Container = styled.div``;
-const Form = styled.form``;
+const Container = styled.div`
+  height: 100vh;
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 10%;
+  left: 6.8%;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 3em;
+  height: 550px;
 
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease-in-out;
+`;
+
+const ButtonSubmit = styled.button`
+  width: 200px;
+  height: 50px;
+`;
+const Button = styled.button`
+  width: 100px;
+  height: 30px;
+  margin-top: -20px;
+  margin-bottom: 35px;
+`;
+
+const Input = styled.input`background: transparent;
+width: 200px;
+padding: 1em;
+margin-bottom: 2em;
+border: none;
+border-left: 1px solid rgba(255, 255, 255, 0.3);
+border-top: 1px solid rgba(255, 255, 255, 0.3);
+border-radius: 5000px;
+backdrop-filter: blur(5px);
+box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+color: #fff;
+font-weight: 500;
+transition: all 0.2s ease-in-out;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
+&:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+}
+&:hover {
+margin: 4px;
+}
+}
+::placeholder {
+font-weight: 400;
+color: #fff;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}`;
+
+const Instructions = styled.textarea`background: transparent;
+width: 200px;
+height: 200px;
+padding: 1em;
+margin-bottom: 2em;
+border: none;
+border-left: 1px solid rgba(255, 255, 255, 0.3);
+border-top: 1px solid rgba(255, 255, 255, 0.3);
+border-radius: 10px;
+backdrop-filter: blur(5px);
+box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+color: #fff;
+font-weight: 500;
+transition: all 0.2s ease-in-out;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
+&:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+}
+  &:active {
+    background: rgba(255,255,255,0.2);
+  }
+}
+}
+&:hover {
+margin: 4px;
+}
+}
+::placeholder {
+font-weight: 400;
+color: #fff;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}`;
 export default CreateDrink;
