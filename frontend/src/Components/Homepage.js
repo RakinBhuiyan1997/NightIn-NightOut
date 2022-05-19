@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
-    <Container>
-      <Header></Header>
+    <div>
       <TitleContainer>
         <NightIn>Night In</NightIn>
         <NightOut>Night Out</NightOut>
@@ -18,22 +17,14 @@ const HomePage = () => {
           <Button>Sign up</Button>
         </StyledLink>
       </ChoiceContainer>
-    </Container>
+    </div>
   );
 };
-
-const Header = styled.header``;
-const Container = styled.div`
-  height: 100vh;
-`;
 
 const TitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
-  position: relative;
-  top: 20%;
-  width: 80%;
-  height: 10%;
+  margin-top: 100px;
 `;
 const ChoiceContainer = styled.div`
   display: flex;
@@ -41,6 +32,7 @@ const ChoiceContainer = styled.div`
   align-items: center;
   position: relative;
   bottom: 30%;
+  margin-top: 100px;
 `;
 
 const NightIn = styled.p`
@@ -49,7 +41,7 @@ const NightIn = styled.p`
   font-size: 30px;
   margin-bottom: -40px;
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 50px;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
@@ -69,7 +61,7 @@ const NightOut = styled.p`
   position: relative;
   font-size: 30px;
   text-align: right;
-  margin-right: 5px;
+  margin-right: 50px;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
