@@ -35,6 +35,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   text-align: center;
   margin-top: 100px;
+  height: 100%;
 `;
 const Card = styled.div`
   width: 125px;

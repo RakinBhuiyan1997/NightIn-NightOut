@@ -24,12 +24,11 @@ const Drinks = () => {
       {loading === true && <Loading />}
       {loading === false && (
         <Container>
-          <header>Choose a category</header>
           {category.map((val) => {
             return (
               <StyledLink to={`/nightin/drinks/${val.strCategory}`}>
                 <Card>
-                  <h4>{val.strCategory}</h4>
+                  <Category>{val.strCategory}</Category>
                 </Card>
               </StyledLink>
             );
@@ -40,7 +39,26 @@ const Drinks = () => {
   );
 };
 
-const Container = styled.div``;
-const Card = styled.div``;
-const StyledLink = styled(Link)``;
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+`;
+const Card = styled.div`
+  width: 125px;
+  height: 125px;
+  border: solid 5px black;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+const Category = styled.h3`
+  color: white;
+  margin-top: 45px;
+`;
 export default Drinks;
