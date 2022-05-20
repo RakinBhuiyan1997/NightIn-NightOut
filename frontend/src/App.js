@@ -18,6 +18,9 @@ import Header from "./Components/Header";
 import Users from "./Components/UserInteraction/Users";
 import UserProfile from "./Components/UserInteraction/UserProfile";
 import GlobalStyles from "./Components/GlobalStyles";
+import Favorites from "./Components/Favorites";
+import FavoriteDrinks from "./Components/FavoriteDrinks";
+import FavoriteGames from "./Components/FavoriteGames";
 function App() {
   return (
     <Router>
@@ -40,6 +43,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/userprofile/:_id" element={<UserProfile />} />
+          <Route path="/user/favorites" element={<Favorites />} />
+          <Route path="/user/favorites/drink" element={<FavoriteDrinks />} />
+          <Route path="/user/favorites/games" element={<FavoriteGames />} />
         </Routes>
       </Container>
     </Router>

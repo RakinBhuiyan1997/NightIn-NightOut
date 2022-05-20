@@ -1,42 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { NightContext } from "./NightContext";
 import { Link } from "react-router-dom";
-const NightIn = () => {
+const Favorites = () => {
   return (
     <Container>
-      <StyledLink to="/nightin/drinks">
+      <StyledLink to="/user/favorites/drink">
         <Card>
-          <TitleChoice>Drinks</TitleChoice>
+          <TitleChoice>Favorite Drinks</TitleChoice>
         </Card>
       </StyledLink>
-      <StyledLink to="/nightin/games">
+      <StyledLink to="/user/favorites/games">
         <Card>
-          <TitleChoice>Games</TitleChoice>
-        </Card>
-      </StyledLink>
-      <StyledLink to="/user/favorites">
-        <Card>
-          <TitleChoice>Favorites</TitleChoice>
-        </Card>
-      </StyledLink>
-      <StyledLink to="/nightin/create">
-        <Card>
-          <TitleChoice>Create</TitleChoice>
+          <TitleChoice>Favorite Games</TitleChoice>
         </Card>
       </StyledLink>
     </Container>
   );
 };
-
 const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  text-align: center;
-  margin-top: 100px;
+  flex-direction: row;
+  justify-content: center;
   height: 100vh;
 `;
+const StyledLink = styled(Link)``;
 const Card = styled.div`
   width: 125px;
   height: 125px;
@@ -44,13 +32,11 @@ const Card = styled.div`
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
+  margin-top: 250px;
 `;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
 const TitleChoice = styled.h2`
   margin-top: 45px;
+  text-align: center;
   text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
@@ -76,4 +62,4 @@ const TitleChoice = styled.h2`
   }
 `;
 
-export default NightIn;
+export default Favorites;
