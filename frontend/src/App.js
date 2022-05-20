@@ -21,12 +21,14 @@ import GlobalStyles from "./Components/GlobalStyles";
 import Favorites from "./Components/Favorites";
 import FavoriteDrinks from "./Components/FavoriteDrinks";
 import FavoriteGames from "./Components/FavoriteGames";
+import Hamburger from "./Components/Hamburger";
+
 function App() {
   return (
     <Router>
       <GlobalStyles />
       <Container>
-        <Header />
+        <Hamburger />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<SignIn />} />

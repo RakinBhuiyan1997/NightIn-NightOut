@@ -40,7 +40,11 @@ const Profile = () => {
           Favorite Drinks:
           {currentUser.favoriteDrinks.length > 1
             ? currentUser.favoriteDrinks.map((val) => {
-                return val.strDrink;
+                return (
+                  <ul>
+                    <li> {val.strDrink}</li>
+                  </ul>
+                );
               })
             : "Check out the drinks and add them to your favorites!"}
         </p>
@@ -48,7 +52,11 @@ const Profile = () => {
           Favorite Games:
           {currentUser.favoriteGames.length > 1 ? (
             currentUser.favoriteGames.map((val) => {
-              return val.game_name;
+              return (
+                <ul>
+                  <li> {val.game_name}</li>
+                </ul>
+              );
             })
           ) : (
             <Button onClick={goToGames}>Check out the games!</Button>
