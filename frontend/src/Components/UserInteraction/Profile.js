@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { currentUser } = useContext(NightContext);
   let navigate = useNavigate();
-
+  console.log(currentUser);
   const goToUsers = (e) => {
     e.preventDefault();
     navigate("/users");
@@ -26,7 +26,7 @@ const Profile = () => {
       <h1>Hey {currentUser.firstName}, here are your deets</h1>
       <Box>
         <p>
-          Friends:{" "}
+          Friends:
           {currentUser.friends.length > 0 ? (
             currentUser.friends.map((val) => {
               return val;
@@ -37,18 +37,18 @@ const Profile = () => {
         </p>
         <p>Email: {currentUser.email}</p>
         <p>
-          Favorite Drinks:{" "}
+          Favorite Drinks:
           {currentUser.favoriteDrinks.length > 1
             ? currentUser.favoriteDrinks.map((val) => {
-                return val;
+                return val.strDrink;
               })
             : "Check out the drinks and add them to your favorites!"}
         </p>
         <p>
-          Favorite Games:{" "}
+          Favorite Games:
           {currentUser.favoriteGames.length > 1 ? (
             currentUser.favoriteGames.map((val) => {
-              return val;
+              return val.game_name;
             })
           ) : (
             <Button onClick={goToGames}>Check out the games!</Button>
