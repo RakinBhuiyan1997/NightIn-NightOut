@@ -151,11 +151,21 @@ const DrinkRecepie = () => {
 };
 
 const Container = styled.div``;
-const Card = styled.div``;
-const Receipe = styled.div``;
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+`;
+const Receipe = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const Image = styled.img`
-  height: 50vh;
-  width: 50vh;
+  height: 40vh;
+  width: 40vh;
+  border-radius: 35px;
 `;
 
 export default DrinkRecepie;

@@ -26,29 +26,31 @@ const Profile = () => {
     <Container>
       <h1>Hey {currentUser.firstName}, here are your deets</h1>
       <Box>
-        <p>
-          Friends:
-          {currentUser.friends.length > 0 ? (
-            currentUser.friends.map((val) => {
-              return val;
-            })
-          ) : (
-            <button onClick={goToUsers}>Go add some friends on the app!</button>
-          )}
-        </p>
+        <FriendsList>Friends:</FriendsList>
+        {currentUser.friends.length > 0 ? (
+          currentUser.friends.map((val) => {
+            return (
+              <ul>
+                <li>{val}</li>
+              </ul>
+            );
+          })
+        ) : (
+          <button onClick={goToUsers}>Go add some friends on the app!</button>
+        )}
+
         <p>Email: {currentUser.email}</p>
-        <p>
-          Favorite Drinks:
-          {currentUser.favoriteDrinks.length > 1
-            ? currentUser.favoriteDrinks.map((val) => {
-                return (
-                  <ul>
-                    <li> {val.strDrink}</li>
-                  </ul>
-                );
-              })
-            : "Check out the drinks and add them to your favorites!"}
-        </p>
+        <FavoriteDrinks>Favorite Drinks:</FavoriteDrinks>
+        {currentUser.favoriteDrinks.length > 1
+          ? currentUser.favoriteDrinks.map((val) => {
+              return (
+                <ul>
+                  <li> {val.strDrink}</li>
+                </ul>
+              );
+            })
+          : "Check out the drinks and add them to your favorites!"}
+
         <p>
           Favorite Games:
           {currentUser.favoriteGames.length > 1 ? (
@@ -73,6 +75,9 @@ const Container = styled.div`
   height: 100vh;
   text-align: center;
 `;
+
+const FriendsList = styled.h2``;
+const FavoriteDrinks = styled.h2``;
 const Box = styled.div`
   display: flex;
   flex-direction: column;
