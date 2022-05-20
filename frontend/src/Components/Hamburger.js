@@ -36,6 +36,12 @@ const Hamburger = () => {
               <li>
                 <StyledLink to="/user/favorites">Favorites</StyledLink>
               </li>
+              <li>
+                <StyledLink to="/profile"> Profile</StyledLink>
+              </li>
+              <li>
+                <StyledLink to="/users">Users</StyledLink>
+              </li>
             </ul>
           </div>
         </nav>

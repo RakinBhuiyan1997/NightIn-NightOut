@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NightContext } from "../NightContext";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
-  const { currentUser } = useContext(NightContext);
+  const { currentUser, setCurrentUser } = useContext(NightContext);
   let navigate = useNavigate();
   console.log(currentUser);
   const goToUsers = (e) => {
@@ -16,9 +16,10 @@ const Profile = () => {
     navigate("/nightin/games");
   };
 
-  const goToSelection = (e) => {
+  const goToHomepage = (e) => {
     e.preventDefault();
-    navigate("/selection");
+    setCurrentUser({});
+    navigate("/");
   };
 
   return (
@@ -62,9 +63,7 @@ const Profile = () => {
             <Button onClick={goToGames}>Check out the games!</Button>
           )}
         </p>
-        <ButtonHomePage onClick={goToSelection}>
-          Back to homepage
-        </ButtonHomePage>
+        <SignOut onClick={goToHomepage}>Sign Out</SignOut>
       </Box>
     </Container>
   );
@@ -85,7 +84,7 @@ width: 150px;,
 height: 50px;
 margin-left: 25px;`;
 
-const ButtonHomePage = styled.button`
+const SignOut = styled.button`
   width: 150px;
   height: 30px;
   margin-top: 50px;
