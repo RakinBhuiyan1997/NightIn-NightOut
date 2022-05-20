@@ -62,7 +62,7 @@ const SignUp = () => {
             setAddUser({ ...addUser, password: e.target.value });
           }}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
@@ -92,8 +92,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 20%;
+  margin-top: 100px;
   left: 7.5%;
   gap: 10px;
   background: rgba(255, 255, 255, 0.3);
@@ -103,7 +102,6 @@ const Form = styled.form`
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  box-shadow: 20px 20px 40px -6px;
 
   transition: all 0.2s ease-in-out;
 `;
@@ -163,5 +161,8 @@ font-weight: 400;
 color: #fff;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }`;
-
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+`;
 export default SignUp;

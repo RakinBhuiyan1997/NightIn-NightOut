@@ -41,7 +41,7 @@ const SignIn = () => {
             setSignIn({ ...signIn, password: e.target.value });
           }}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
@@ -141,5 +141,8 @@ font-weight: 400;
 color: #fff;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }`;
-
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+`;
 export default SignIn;
