@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { NightContext } from "../NightContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Profile = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
   const [deleteChoice, setDeleteChoice] = useState(false);
@@ -62,21 +63,25 @@ const Profile = () => {
                 );
               })
             ) : (
-              <button onClick={goToUsers}>
+              <Button onClick={goToUsers}>
                 Go add some friends on the app!
-              </button>
+              </Button>
             )}
 
             <List>Favorite Drinks:</List>
-            {currentUser.favoriteDrinks.length > 1
-              ? currentUser.favoriteDrinks.map((val) => {
-                  return (
-                    <ul key={val.idDrink}>
-                      <li> {val.strDrink}</li>
-                    </ul>
-                  );
-                })
-              : "Check out the drinks and add them to your favorites!"}
+            {currentUser.favoriteDrinks.length > 1 ? (
+              currentUser.favoriteDrinks.map((val) => {
+                return (
+                  <ul key={val.idDrink}>
+                    <li> {val.strDrink}</li>
+                  </ul>
+                );
+              })
+            ) : (
+              <StyledLink to="/nightin/drinks">
+                <ButtonDrink>Add some Drinks!</ButtonDrink>
+              </StyledLink>
+            )}
 
             <List>Favorite Games:</List>
             {currentUser.favoriteGames.length > 1 ? (
@@ -132,9 +137,14 @@ const Box = styled.div`
   align-items: center;
 `;
 
+const ButtonDrink = styled.button`
+  width: 150px;
+  height: 30px;
+`;
+
 const Button = styled.button`
 width: 150px;,
-height: 50px;
+height: 70px;
 margin-left: 25px;`;
 
 const SignOut = styled.button`
@@ -154,5 +164,9 @@ const DeleteContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 export default Profile;

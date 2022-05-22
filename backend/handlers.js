@@ -256,8 +256,13 @@ const addFriend = async (req, res) => {
         { _id: ObjectId(currentUser._id) },
         { $push: { friends: friend } }
       );
+    const updatedUser = await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
     console.log(result);
-    res.status(200).json({ status: 200, data: result, message: "Success" });
+    res
+      .status(200)
+      .json({ status: 200, data: updatedUser, message: "Success" });
   } catch (err) {
     console.log(err);
   }
@@ -277,8 +282,13 @@ const deleteFriend = async (req, res) => {
         { _id: ObjectId(currentUser._id) },
         { $pull: { friends: friend } }
       );
+    const updatedUser = await db
+      .collection("users")
+      .findOne({ _id: ObjectId(currentUser._id) });
     console.log(result);
-    res.status(200).json({ status: 200, data: result, message: "Success" });
+    res
+      .status(200)
+      .json({ status: 200, data: updatedUser, message: "Success" });
   } catch (err) {
     console.log(err);
   }

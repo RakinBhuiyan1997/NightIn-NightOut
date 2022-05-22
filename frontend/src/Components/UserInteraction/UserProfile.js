@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { _id } = useParams();
-  const { currentUser } = useContext(NightContext);
+  const { currentUser, setCurrentUser } = useContext(NightContext);
   const [userInfo, setUserInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState("Add Friend");
@@ -25,7 +25,7 @@ const UserProfile = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     setText("Friends");
-    const addFriend = await fetch("/api/users/friends/addFriends", {
+    await fetch("/api/users/friends/addFriends", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -35,13 +35,19 @@ const UserProfile = () => {
         friend: userInfo.firstName,
         currentUser: currentUser,
       }),
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCurrentUser(data.data);
+      });
   };
 
   const handleDelete = async (e) => {
     e.preventDefault();
     setText("Add Friend");
-    const addFriend = await fetch("/api/users/friends/deleteFriend", {
+    await fetch("/api/users/friends/deleteFriend", {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -51,7 +57,13 @@ const UserProfile = () => {
         friend: userInfo.firstName,
         currentUser: currentUser,
       }),
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCurrentUser(data.data);
+      });
   };
 
   return (
@@ -80,9 +92,9 @@ const UserProfile = () => {
           })}
 
           <h2>Friends: </h2>
-          {userInfo.friends.map((val) => {
+          {userInfo.friends.map((val, index) => {
             return (
-              <ul>
+              <ul key={index}>
                 <li>{val}</li>
               </ul>
             );
