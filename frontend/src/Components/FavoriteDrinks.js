@@ -5,12 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const FavoriteDrinks = () => {
   const { currentUser } = useContext(NightContext);
-  console.log(currentUser);
 
   let navigate = useNavigate();
 
   const { favoriteDrinks } = currentUser;
-  console.log("Drinks selection", favoriteDrinks);
 
   const handleNavigate = (e, val) => {
     e.preventDefault();
@@ -25,6 +23,7 @@ const FavoriteDrinks = () => {
             onClick={(e) => {
               handleNavigate(e, val);
             }}
+            key={val.idDrink}
           >
             <Image src={val.strDrinkThumb} alt="Drink image" />
             <Title>{val.strDrink}</Title>

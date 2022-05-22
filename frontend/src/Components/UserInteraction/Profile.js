@@ -7,7 +7,7 @@ const Profile = () => {
   const [deleteChoice, setDeleteChoice] = useState(false);
 
   let navigate = useNavigate();
-  console.log(currentUser);
+
   const goToUsers = (e) => {
     e.preventDefault();
     navigate("/users");
@@ -54,9 +54,9 @@ const Profile = () => {
           <Box>
             <List>Friends:</List>
             {currentUser.friends.length > 0 ? (
-              currentUser.friends.map((val) => {
+              currentUser.friends.map((val, index) => {
                 return (
-                  <ul>
+                  <ul key={index}>
                     <li>{val}</li>
                   </ul>
                 );
@@ -71,7 +71,7 @@ const Profile = () => {
             {currentUser.favoriteDrinks.length > 1
               ? currentUser.favoriteDrinks.map((val) => {
                   return (
-                    <ul>
+                    <ul key={val.idDrink}>
                       <li> {val.strDrink}</li>
                     </ul>
                   );
@@ -82,7 +82,7 @@ const Profile = () => {
             {currentUser.favoriteGames.length > 1 ? (
               currentUser.favoriteGames.map((val) => {
                 return (
-                  <ul>
+                  <ul key={val._id}>
                     <li> {val.game_name}</li>
                   </ul>
                 );

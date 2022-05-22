@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Hamburger = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
-  console.log(currentUser);
+
   return (
     <Container>
       {Object.keys(currentUser).length > 0 ? (

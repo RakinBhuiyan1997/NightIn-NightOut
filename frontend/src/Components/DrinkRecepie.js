@@ -11,7 +11,7 @@ const DrinkRecepie = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
   const [ingredients, setIngredients] = useState({});
   const [loading, setLoading] = useState(true);
-  console.log(currentUser);
+
   useEffect(() => {
     fetch(`/api/drinks/drink/${id}`)
       .then((res) => {
@@ -58,7 +58,6 @@ const DrinkRecepie = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setCurrentUser(data.data);
       });
   };
@@ -79,7 +78,6 @@ const DrinkRecepie = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setCurrentUser(data.data);
       });
   };
@@ -89,8 +87,7 @@ const DrinkRecepie = () => {
     const isFavorite = currentUser.favoriteDrinks.some(
       (val) => val.idDrink === ingredients.idDrink
     );
-    console.log("this is the drink data", ingredients);
-    console.log("this is the favorite boolean data", isFavorite);
+
     if (isFavorite) {
       removeDrink();
       return;
@@ -101,15 +98,7 @@ const DrinkRecepie = () => {
   const isFavorited = currentUser?.favoriteDrinks?.some(
     (x) => x.idDrink === ingredients.idDrink
   );
-  console.log({
-    isFavorited,
-    currentUser,
-    ingredients,
-  });
 
-  console.log("This is to check if it is in the array", isFavorited);
-
-  console.log(ingredients);
   return (
     <>
       {loading && <Loading />}
@@ -119,19 +108,19 @@ const DrinkRecepie = () => {
             <Image src={ingredients.strDrinkThumb} alt="drink image" />
             <Receipe>
               <h2>Ingredients</h2>
-              {arr.map((val) => {
+              {arr.map((val, index) => {
                 return (
-                  <div>
-                    <p>{val}</p>
-                  </div>
+                  <ul key={index}>
+                    <li>{val}</li>
+                  </ul>
                 );
               })}
               <h2>Measurements</h2>
-              {int.map((val) => {
+              {int.map((val, index) => {
                 return (
-                  <div>
-                    <p>{val}</p>
-                  </div>
+                  <ul key={index}>
+                    <li>{val}</li>
+                  </ul>
                 );
               })}
               <h2>Instructions</h2>

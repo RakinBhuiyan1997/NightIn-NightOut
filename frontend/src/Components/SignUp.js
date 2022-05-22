@@ -20,13 +20,12 @@ const SignUp = () => {
     });
 
     const response = await addPerson.json();
-    console.log(response);
+
     setCurrentUser(response.data);
 
     navigate("/selection");
   };
-  console.log(addUser);
-  console.log(currentUser);
+
   return (
     <Container>
       <Form onSubmit={handleSubmit}>

@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Welcome to NightIn NightOut
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to a demo application of Night In and Night Out created by Rakin Bhuiyan! T
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Night In and Night Out application is a party application for those who want to have fun no matter if its outside on the streets of Montreal or inside with their friends! The night out option (Undergoing development) connects to a google API which shows the nearest clubs and bars according to your location. The night in option (prototype ready) guides you to a list of fun drinks your friends can make at home and fun drinking games that you can play indoors!
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-Profile Page
+-Full CRUD throughout application
+-Validation for sign in.
+-Hashed and salted passwords for secure storage.
+-Saving user prefences on games and drinks.
+-User interaction (Following, unfollowing)
+-User creation (Users can create own drinks and games to add to database)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech used in application
 
-### `npm test`
+-HTML
+-CSS
+-JAVASCRIPT
+-Mongoose
+-MongoDB
+-Express
+-Node
+-React
+-Bcrypt
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Reflection
 
-### `npm run build`
+_What I enjoyed_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Creating many different handlers and RESTful endpoints for data manipulation.
+- Organizaing and creating well rounded functional components.
+- Learning BCRYPT and setting up validation.
+- Deep diving in conditionally rendering throughout the project and linking them all together from different components.
+- Learning and applying many different CSS styling techniques.
+- Tackling bugs and resolving issues.
+- Discussing ideas with my peers on what could be improved and what could be added.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_Difficulties I Face_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Cleaning up data from API to be able to use it properly in my application.
+- Connecting proper responses from the front-end and the back-end.
+- Ensuring proper navigation throughout my application.
 
-### `npm run eject`
+_Lessons Learned_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Incorporating useReducers would have helped in cleaner code when users are choosing favorite drinks and games.
+- Learned to optimize our code to ensure easier accessibility across all developers.
+- Proper consisten semantics throughout entire applications.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Next Steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Implement Oauth and allow users to sign in from Google.
+- Start development of the NightOut section of the application.
+- Use Google Maps API for NightOUt section.
+- Incorporate additional styling across application.
+- Better navigation for users.

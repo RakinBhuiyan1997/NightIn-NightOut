@@ -28,7 +28,7 @@ const DrinksCategory = () => {
             <Title>What you gonna whip up tonight?</Title>
             {drinks.map((val) => {
               return (
-                <Card>
+                <Card key={val.idDrink}>
                   <StyledLink to={`/nightin/drinks/drink/${val.idDrink}`}>
                     <Image src={val.strDrinkThumb} alt={val.strDrink} />
 

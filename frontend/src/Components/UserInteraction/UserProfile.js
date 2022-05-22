@@ -64,7 +64,7 @@ const UserProfile = () => {
           <h2>Favorite Drinks: </h2>
           {userInfo.favoriteDrinks.map((val) => {
             return (
-              <ul>
+              <ul key={val.idDrink}>
                 <li>{val.strDrink}</li>
               </ul>
             );
@@ -73,7 +73,7 @@ const UserProfile = () => {
           <h2>Favorite Games: </h2>
           {userInfo.favoriteGames.map((val) => {
             return (
-              <ul>
+              <ul key={val._id}>
                 <li>{val.game_name}</li>
               </ul>
             );

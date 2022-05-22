@@ -14,12 +14,13 @@ const Favorites = () => {
         <Card>
           <TitleChoice>Favorite Games</TitleChoice>
         </Card>
-        <StyledLink to="/nightin">
-          <Card>
-            <TitleChoice>Back to Selection</TitleChoice>
-          </Card>
-        </StyledLink>
       </StyledLink>
+      <StyledLink to="/nightin">
+        <Card>
+          <TitleChoice>Back to Selection</TitleChoice>
+        </Card>
+      </StyledLink>
+      \
     </Container>
   );
 };

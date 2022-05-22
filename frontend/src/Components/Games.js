@@ -16,12 +16,10 @@ const Games = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setGames(data.data);
         setLoading(false);
       });
   }, []);
-  console.log("this is the current user", currentUser);
 
   const saveGame = async (gameVal) => {
     await fetch("http://localhost:8000/api/user/favorites/addGame", {
@@ -36,7 +34,6 @@ const Games = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setCurrentUser(data.data);
       });
   };
@@ -57,7 +54,6 @@ const Games = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setCurrentUser(data.data);
       });
   };
@@ -67,15 +63,14 @@ const Games = () => {
     const isFavorite = currentUser.favoriteGames.some(
       (val) => val._id === game._id
     );
-    console.log("this is the game data", game);
-    console.log("this is the favorite boolean data", isFavorite);
+
     if (isFavorite) {
       deleteGame(game);
       return;
     }
     saveGame(game);
   };
-  console.log(currentUser);
+
   return (
     <div>
       {loading && <Loading />}
@@ -95,9 +90,9 @@ const Games = () => {
                 <h3>Players: {val.players}</h3>
                 <h3>
                   Items Needed:
-                  {val.items.map((itm) => {
+                  {val.items.map((itm, index) => {
                     return (
-                      <ul>
+                      <ul key={index}>
                         <li>{itm}</li>
                       </ul>
                     );

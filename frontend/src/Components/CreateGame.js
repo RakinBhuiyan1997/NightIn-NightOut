@@ -13,7 +13,6 @@ const CreateGame = () => {
   });
   const [reviewGame, setReviewGame] = useState(false);
   const [userInput, setUserInput] = useState("");
-  console.log(currentUser);
 
   let navigate = useNavigate();
 
@@ -34,7 +33,6 @@ const CreateGame = () => {
     setCreateGame({ ...createGame, items: arr });
     setUserInput("");
   };
-  console.log(createGame);
 
   return (
     <div>
@@ -44,9 +42,9 @@ const CreateGame = () => {
           <span>How many players: {createGame.players}</span>
           <span>
             Items{" "}
-            {createGame.items.map((val) => {
+            {createGame.items.map((val, index) => {
               return (
-                <ul>
+                <ul key={index}>
                   <li>{val}</li>
                 </ul>
               );

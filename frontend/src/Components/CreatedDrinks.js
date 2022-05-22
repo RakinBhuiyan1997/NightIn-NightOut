@@ -13,7 +13,6 @@ const CreatedDrinks = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setCreatedDrinks(data.data);
         setLoading(false);
       });

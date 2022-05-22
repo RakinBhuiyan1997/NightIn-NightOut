@@ -14,7 +14,6 @@ import CreateSelection from "./Components/CreateSelection";
 import CreateDrink from "./Components/CreateDrink";
 import CreateGame from "./Components/CreateGame";
 import Profile from "./Components/UserInteraction/Profile";
-import Header from "./Components/Header";
 import Users from "./Components/UserInteraction/Users";
 import UserProfile from "./Components/UserInteraction/UserProfile";
 import GlobalStyles from "./Components/GlobalStyles";

@@ -26,7 +26,10 @@ const Drinks = () => {
         <Container>
           {category.map((val) => {
             return (
-              <StyledLink to={`/nightin/drinks/${val.strCategory}`}>
+              <StyledLink
+                to={`/nightin/drinks/${val.strCategory}`}
+                key={val.strCategory}
+              >
                 <Card>
                   <Category>{val.strCategory}</Category>
                 </Card>

@@ -11,7 +11,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("test");
+
     const findUser = await fetch("/api/signin/getUser", {
       method: "POST",
       body: JSON.stringify(signIn),
@@ -19,12 +19,12 @@ const SignIn = () => {
     });
 
     const result = await findUser.json();
-    console.log(result);
+
     setCurrentUser(result.user);
 
     navigate("/selection");
   };
-  console.log(currentUser);
+
   return (
     <Container>
       <Form onSubmit={handleSubmit}>

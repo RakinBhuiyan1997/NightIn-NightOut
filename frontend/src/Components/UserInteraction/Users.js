@@ -14,7 +14,6 @@ const Users = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setUsers(data.data);
         setLoading(false);
       });
@@ -25,7 +24,6 @@ const Users = () => {
     navigate(`/users/userprofile/${val._id}`);
   };
 
-  console.log(users);
   return (
     <Container>
       {loading === true && <Loading />}
@@ -34,6 +32,7 @@ const Users = () => {
           {users.map((val) => {
             return (
               <Card
+                key={val._id}
                 onClick={(e) => {
                   handleNavigate(e, val);
                 }}

@@ -81,7 +81,6 @@ const CreateDrink = () => {
               name="choice"
               id="choose"
               onChange={(e) => {
-                console.log(e.target.value);
                 setCreateDrink({ ...createDrink, alcholic: e.target.value });
               }}
             >

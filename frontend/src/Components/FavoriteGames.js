@@ -6,12 +6,8 @@ import { Link } from "react-router-dom";
 
 const FavoriteGames = () => {
   const { currentUser } = useContext(NightContext);
-  console.log(currentUser);
-
-  let navigate = useNavigate();
 
   const { favoriteGames } = currentUser;
-  console.log("Drinks selection", favoriteGames);
 
   return (
     <Container>
@@ -22,14 +18,14 @@ const FavoriteGames = () => {
       )}
       {favoriteGames.map((val) => {
         return (
-          <Card>
+          <Card key={val._id}>
             <Title>Name: {val.game_name}</Title>
             <h3>Players: {val.players}</h3>
             <h3>
               Items Needed:
-              {val.items.map((itm) => {
+              {val.items.map((itm, index) => {
                 return (
-                  <ul>
+                  <ul key={index}>
                     <li>{itm}</li>
                   </ul>
                 );
