@@ -49,8 +49,8 @@ const Profile = () => {
         </DeleteContainer>
       ) : (
         <Container>
-          <h1>Hey {currentUser.firstName}, here are your deets</h1>
-          <p>Email: {currentUser.email}</p>
+          <Name>Hey {currentUser.firstName}</Name>
+          <h2>Your Email: {currentUser.email}</h2>
           <Box>
             <List>Friends:</List>
             {currentUser.friends.length > 0 ? (
@@ -105,6 +105,23 @@ const Profile = () => {
 const Container = styled.div`
   height: 100vh;
   text-align: center;
+`;
+
+const Name = styled.h1`
+  color: white;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+        0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
 `;
 
 const List = styled.h2``;
