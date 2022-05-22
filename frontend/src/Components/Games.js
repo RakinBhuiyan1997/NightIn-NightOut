@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NightContext } from "./NightContext";
 import Loading from "./Loading";
 import FavoriteButton from "./FavoriteButton";
+import { Link } from "react-router-dom";
 const Games = () => {
   const { currentUser, setCurrentUser } = useContext(NightContext);
   const [games, setGames] = useState([]);
@@ -76,49 +77,94 @@ const Games = () => {
   };
   console.log(currentUser);
   return (
-    <Container>
+    <div>
       {loading && <Loading />}
       {!loading && (
-        <Box>
-          <Card>
-            {games.map((val) => {
-              //?. shorthand ternary. If it has the value, continue, if it doesnt, it just stops.
-              const isFavorited = currentUser?.favoriteGames?.some(
-                (x) => x._id === val._id
-              );
-              return (
-                <div key={val._id}>
-                  <h2>Name: {val.game_name}</h2>
-                  <h3>Players: {val.players}</h3>
-                  <h3>
-                    Items Needed:
-                    {val.items.map((itm) => {
-                      return (
-                        <ul>
-                          <li>{itm}</li>
-                        </ul>
-                      );
-                    })}
-                  </h3>
-                  <p>Instructions: {val.instructions}</p>
-                  <p>
-                    Save this game:{" "}
-                    <FavoriteButton
-                      isFavorited={isFavorited}
-                      handleClick={(e) => handleClick(e, val)}
-                    />
-                  </p>
-                </div>
-              );
-            })}
-          </Card>
-        </Box>
+        <div>
+          <StyledLink to="/nightin">
+            <Button>Back to category</Button>
+          </StyledLink>
+          {games.map((val) => {
+            //?. shorthand ternary. If it has the value, continue, if it doesnt, it just stops.
+            const isFavorited = currentUser?.favoriteGames?.some(
+              (x) => x._id === val._id
+            );
+            return (
+              <CardBox key={val._id}>
+                <GameTitle>Name: {val.game_name}</GameTitle>
+                <h3>Players: {val.players}</h3>
+                <h3>
+                  Items Needed:
+                  {val.items.map((itm) => {
+                    return (
+                      <ul>
+                        <li>{itm}</li>
+                      </ul>
+                    );
+                  })}
+                </h3>
+                <Instructions>Instructions: {val.instructions}</Instructions>
+                <Span>
+                  <FavoriteButton
+                    isFavorited={isFavorited}
+                    handleClick={(e) => handleClick(e, val)}
+                  />
+                </Span>
+              </CardBox>
+            );
+          })}
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 
-const Container = styled.div``;
-const Card = styled.div``;
-const Box = styled.div``;
+const GameTitle = styled.h2`
+  color: white;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+        0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+`;
+
+const CardBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`;
+
+const Span = styled.span`
+  text-align: center;
+  margin-left: 180px;
+  margin-bottom: 50px;
+`;
+
+const Instructions = styled.p`
+  padding: 10px;
+  font-size: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  position: relative;
+  left: 70%;
+
+  width: 10px;
+  height: 30px;
+`;
+
+const Button = styled.button`
+  background-color: transparent;
+  width: 100px;
+`;
 export default Games;

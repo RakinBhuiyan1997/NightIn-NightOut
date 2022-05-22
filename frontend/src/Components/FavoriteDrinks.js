@@ -45,7 +45,6 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 5px black;
   height: 40vh;
   width: 40vh;
 `;
@@ -53,6 +52,7 @@ const Image = styled.img`
   height: 30vh;
   width: 30vh;
   margin-top: 10px;
+  border-radius: 50px;
 `;
 const Title = styled.h2``;
 export default FavoriteDrinks;

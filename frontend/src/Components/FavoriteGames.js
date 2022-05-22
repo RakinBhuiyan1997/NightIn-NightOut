@@ -23,7 +23,7 @@ const FavoriteGames = () => {
       {favoriteGames.map((val) => {
         return (
           <Card>
-            <h2>Name: {val.game_name}</h2>
+            <Title>Name: {val.game_name}</Title>
             <h3>Players: {val.players}</h3>
             <h3>
               Items Needed:
@@ -35,7 +35,7 @@ const FavoriteGames = () => {
                 );
               })}
             </h3>
-            <p>Instructions: {val.instructions}</p>
+            <Instructions>Instructions: {val.instructions}</Instructions>
           </Card>
         );
       })}
@@ -47,19 +47,34 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 `;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 5px black;
   width: 40vh;
 `;
-const Image = styled.img`
-  height: 30vh;
-  width: 30vh;
-  margin-top: 10px;
+
+const Title = styled.h2`
+  color: white;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+        0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
 `;
-const Title = styled.h2``;
+
+const Instructions = styled.p`
+  padding: 10px;
+  font-size: 20px;
+`;
 export default FavoriteGames;

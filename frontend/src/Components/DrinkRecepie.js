@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import FavoriteButton from "./FavoriteButton";
 import { NightContext } from "./NightContext";
+import { Link } from "react-router-dom";
 
 const DrinkRecepie = () => {
   const { id } = useParams();
@@ -113,7 +114,7 @@ const DrinkRecepie = () => {
     <>
       {loading && <Loading />}
       {!loading && (
-        <Container>
+        <div>
           <Card>
             <Image src={ingredients.strDrinkThumb} alt="drink image" />
             <Receipe>
@@ -144,13 +145,12 @@ const DrinkRecepie = () => {
               />
             </p>
           </Card>
-        </Container>
+        </div>
       )}
     </>
   );
 };
 
-const Container = styled.div``;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
@@ -166,6 +166,15 @@ const Image = styled.img`
   height: 40vh;
   width: 40vh;
   border-radius: 35px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const Button = styled.button`
+  width: 150px;
+  height: 30px;
 `;
 
 export default DrinkRecepie;

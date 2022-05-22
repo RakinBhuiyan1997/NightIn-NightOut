@@ -14,14 +14,19 @@ const Favorites = () => {
         <Card>
           <TitleChoice>Favorite Games</TitleChoice>
         </Card>
+        <StyledLink to="/nightin">
+          <Card>
+            <TitleChoice>Back to Selection</TitleChoice>
+          </Card>
+        </StyledLink>
       </StyledLink>
     </Container>
   );
 };
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
 `;
 const StyledLink = styled(Link)``;
@@ -31,8 +36,8 @@ const Card = styled.div`
   border: solid 5px black;
   margin: 10px;
   border-radius: 10px;
+  margin-top: 100px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
-  margin-top: 250px;
 `;
 const TitleChoice = styled.h2`
   margin-top: 45px;
