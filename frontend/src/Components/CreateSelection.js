@@ -16,6 +16,11 @@ const CreateSelection = () => {
             <Create>Create a game</Create>
           </Card>
         </StyledLink>
+        <StyledLink to="/nightin">
+          <Card>
+            <Create>Back to Selection</Create>
+          </Card>
+        </StyledLink>
       </div>
     </Container>
   );

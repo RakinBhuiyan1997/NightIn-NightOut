@@ -36,7 +36,7 @@ const Card = styled.div`
   border: solid 5px black;
   margin: 10px;
   border-radius: 10px;
-  margin-top: 100px;
+  margin-top: 50px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
 `;
 const TitleChoice = styled.h2`

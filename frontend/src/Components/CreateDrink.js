@@ -120,6 +120,9 @@ const CreateDrink = () => {
               Reveiw Drink
             </ButtonReview>
           </Form>
+          <ButtonBack onClick={() => navigate("/nightin/create")}>
+            Back to Create Option
+          </ButtonBack>
         </Container>
       )}
     </div>
@@ -163,6 +166,13 @@ const ButtonReview = styled.button`
   width: 200px;
   height: 50px;
 `;
+
+const ButtonBack = styled.button`
+  width: 200px;
+  height: 30px;
+  margin-top: 50px;
+`;
+
 const Button = styled.button`
   width: 100px;
   height: 30px;

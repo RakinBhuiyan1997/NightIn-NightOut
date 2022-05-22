@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { NightContext } from "../NightContext";
 import Loading from "../Loading";
 import { Link } from "react-router-dom";
+
 const UserProfile = () => {
   const { _id } = useParams();
   const { currentUser } = useContext(NightContext);
@@ -60,26 +61,32 @@ const UserProfile = () => {
         <div>
           <UserName>{userInfo.firstName}</UserName>
 
-          <h4>
-            Favorite Drinks:{" "}
-            {userInfo.favoriteDrinks.map((val) => {
-              return (
-                <ul>
-                  <li>{val.strDrink}</li>
-                </ul>
-              );
-            })}
-          </h4>
-          <h4>
-            Favorite Games:{" "}
-            {userInfo.favoriteGames.map((val) => {
-              return (
-                <ul>
-                  <li>{val.game_name}</li>
-                </ul>
-              );
-            })}
-          </h4>
+          <h2>Favorite Drinks: </h2>
+          {userInfo.favoriteDrinks.map((val) => {
+            return (
+              <ul>
+                <li>{val.strDrink}</li>
+              </ul>
+            );
+          })}
+
+          <h2>Favorite Games: </h2>
+          {userInfo.favoriteGames.map((val) => {
+            return (
+              <ul>
+                <li>{val.game_name}</li>
+              </ul>
+            );
+          })}
+
+          <h2>Friends: </h2>
+          {userInfo.friends.map((val) => {
+            return (
+              <ul>
+                <li>{val}</li>
+              </ul>
+            );
+          })}
 
           <div>
             <Button
@@ -109,6 +116,20 @@ const Container = styled.div`
 
 const UserName = styled.h1`
   text-align: center;
+  color: white;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+        0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
 `;
 
 const Button = styled.button`

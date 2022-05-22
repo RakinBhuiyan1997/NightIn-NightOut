@@ -120,6 +120,9 @@ const CreateGame = () => {
               Review game
             </ButtonSubmit>
           </Form>
+          <ButtonBack onClick={() => navigate("/nightin/create")}>
+            Back to Create Option
+          </ButtonBack>
         </Container>
       )}
     </div>
@@ -131,6 +134,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const ButtonBack = styled.button`
+  width: 200px;
+  height: 30px;
+  margin-top: 50px;
 `;
 
 const ButtonEdit = styled.button`
