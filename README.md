@@ -78,25 +78,25 @@ Night In and Night Out application is a party application for those who want to 
 
 ## Features
 
--Profile Page
--Full CRUD throughout application
--Validation for sign in.
--Hashed and salted passwords for secure storage.
--Saving user prefences on games and drinks.
--User interaction (Following, unfollowing)
--User creation (Users can create own drinks and games to add to database)
+- Profile Page
+- Full CRUD throughout application
+- Validation for sign in.
+- Hashed and salted passwords for secure storage.
+- Saving user prefences on games and drinks.
+- User interaction (Following, unfollowing)
+- User creation (Users can create own drinks and games to add to database)
 
 ## Tech used in application
 
--HTML
--CSS
--JAVASCRIPT
--Mongoose
--MongoDB
--Express
--Node
--React
--Bcrypt
+- HTML
+- CSS
+- Javascript
+- Mongoose
+- MongoDB
+- Express
+- Node
+- React
+- Bcrypt
 
 ## Reflection
 
