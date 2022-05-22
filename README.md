@@ -6,6 +6,10 @@ Welcome to a demo application of Night In and Night Out created by Rakin Bhuiyan
 
 Night In and Night Out application is a party application for those who want to have fun no matter if its outside on the streets of Montreal or inside with their friends! The night out option (Undergoing development) connects to a google API which shows the nearest clubs and bars according to your location. The night in option (prototype ready) guides you to a list of fun drinks your friends can make at home and fun drinking games that you can play indoors!
 
+## Applications Images
+
+### Homepage
+
 ## Features
 
 -Profile Page
