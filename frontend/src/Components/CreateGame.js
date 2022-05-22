@@ -11,6 +11,7 @@ const CreateGame = () => {
     instructions: "",
     createdBy: currentUser.firstName,
   });
+  const [reviewGame, setReviewGame] = useState(false);
   const [userInput, setUserInput] = useState("");
   console.log(currentUser);
 
@@ -36,51 +37,111 @@ const CreateGame = () => {
   console.log(createGame);
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <label>Name of the Game</label>
-        <Input
-          placeholder="enter name here"
-          type="text"
-          onChange={(e) => {
-            setCreateGame({ ...createGame, game_name: e.target.value });
-          }}
-        />
-        <label>How many players</label>
-        <Input
-          placeholder="enter players here"
-          type="text"
-          onChange={(e) => {
-            setCreateGame({ ...createGame, players: e.target.value });
-          }}
-        />
+    <div>
+      {reviewGame ? (
+        <Container>
+          <h1>{createGame.game_name}</h1>
+          <span>How many players: {createGame.players}</span>
+          <span>
+            Items{" "}
+            {createGame.items.map((val) => {
+              return (
+                <ul>
+                  <li>{val}</li>
+                </ul>
+              );
+            })}
+          </span>
+          <span>{createGame.instructions}</span>
+          <ButtonEdit
+            onClick={(e) => {
+              e.preventDefault(e);
+              setReviewGame(false);
+            }}
+          >
+            Edit game
+          </ButtonEdit>
 
-        <label>Add list of items needed!</label>
-        <Input
-          placeholder="enter item here"
-          type="text"
-          onChange={(e) => {
-            setUserInput(e.target.value);
-          }}
-          value={userInput}
-        />
-        <Button onClick={addItem}>Add item</Button>
+          <ButtonCreate
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Create Game
+          </ButtonCreate>
+        </Container>
+      ) : (
+        <Container>
+          <Form>
+            <label>Name of the Game</label>
+            <Input
+              placeholder="enter name here"
+              type="text"
+              onChange={(e) => {
+                setCreateGame({ ...createGame, game_name: e.target.value });
+              }}
+              value={createGame.game_name}
+            />
+            <label>How many players</label>
+            <Input
+              placeholder="enter players here"
+              type="text"
+              onChange={(e) => {
+                setCreateGame({ ...createGame, players: e.target.value });
+              }}
+              value={createGame.players}
+            />
 
-        <label>How to play</label>
-        <Instructions
-          placeholder="write instructions"
-          onChange={(e) => {
-            setCreateGame({ ...createGame, instructions: e.target.value });
-          }}
-        />
-        <ButtonSubmit type="submit">Create Game!</ButtonSubmit>
-      </Form>
-    </Container>
+            <label>Add list of items needed!</label>
+            <Input
+              placeholder="enter item here"
+              type="text"
+              onChange={(e) => {
+                setUserInput(e.target.value);
+              }}
+              value={userInput}
+            />
+            <Button onClick={addItem}>Add item</Button>
+
+            <label>How to play</label>
+            <Instructions
+              placeholder="write instructions"
+              onChange={(e) => {
+                setCreateGame({ ...createGame, instructions: e.target.value });
+              }}
+              value={createGame.instructions}
+            />
+            <ButtonSubmit
+              onClick={(e) => {
+                setReviewGame(true);
+              }}
+              type="submit"
+            >
+              Review game
+            </ButtonSubmit>
+          </Form>
+        </Container>
+      )}
+    </div>
   );
 };
 
 const Container = styled.div`
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ButtonEdit = styled.button`
+  width: 200px;
+  height: 30x;
+  margin-top: 50px;
+`;
+const ButtonCreate = styled.button`
+  width: 200px;
+  height: 30px;
+  margin-top: 50px;
 `;
 const Form = styled.form`
   display: flex;

@@ -10,6 +10,8 @@ const CreateDrink = () => {
     instructions: "",
   });
   const [userInput, setUserInput] = useState("");
+  const [reviewDrink, setReviewDrink] = useState(false);
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -29,58 +31,105 @@ const CreateDrink = () => {
     setUserInput("");
   };
 
-  console.log(createDrink);
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <label>Enter drink name</label>
-        <Input
-          placeholder="drink name"
-          type="text"
-          onChange={(e) => {
-            setCreateDrink({ ...createDrink, drink_name: e.target.value });
-          }}
-        />
-        <label>Alcoholic?</label>
-        <select
-          name="choice"
-          id="choose"
-          onChange={(e) => {
-            console.log(e.target.value);
-            setCreateDrink({ ...createDrink, alcholic: e.target.value });
-          }}
-        >
-          <option value={true}>yes</option>
-          <option value={false}>no</option>
-        </select>
+    <div>
+      {reviewDrink ? (
+        <Container>
+          <h1>{createDrink.drink_name}</h1>
+          <span>
+            Ingredients:{" "}
+            {createDrink.ingredients.map((val) => {
+              return (
+                <ul>
+                  <li>{val}</li>
+                </ul>
+              );
+            })}
+          </span>
+          <span>{createDrink.instructions}</span>
+          <ButtonEdit
+            onClick={(e) => {
+              e.preventDefault(e);
+              setReviewDrink(false);
+            }}
+          >
+            Edit game
+          </ButtonEdit>
 
-        <label>Add list of ingredients needed!</label>
-        <Input
-          placeholder="enter item here"
-          type="text"
-          value={userInput}
-          onChange={(e) => {
-            setUserInput(e.target.value);
-          }}
-        />
-        <Button onClick={addItem}>Add item</Button>
+          <ButtonCreate
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Create Game
+          </ButtonCreate>
+        </Container>
+      ) : (
+        <Container>
+          <Form>
+            <label>Enter drink name</label>
+            <Input
+              placeholder="drink name"
+              type="text"
+              onChange={(e) => {
+                setCreateDrink({ ...createDrink, drink_name: e.target.value });
+              }}
+            />
+            <label>Alcoholic?</label>
+            <select
+              name="choice"
+              id="choose"
+              onChange={(e) => {
+                console.log(e.target.value);
+                setCreateDrink({ ...createDrink, alcholic: e.target.value });
+              }}
+            >
+              <option value={true}>yes</option>
+              <option value={false}>no</option>
+            </select>
 
-        <label>Instructions to make the drink</label>
-        <Instructions
-          placeholder="instructions here"
-          type="text"
-          onChange={(e) => {
-            setCreateDrink({ ...createDrink, instructions: e.target.value });
-          }}
-        />
-        <ButtonSubmit type="submit">Create Drink!</ButtonSubmit>
-      </Form>
-    </Container>
+            <label>Add list of ingredients needed!</label>
+            <Input
+              placeholder="enter item here"
+              type="text"
+              value={userInput}
+              onChange={(e) => {
+                setUserInput(e.target.value);
+              }}
+            />
+            <Button onClick={addItem}>Add item</Button>
+
+            <label>Instructions to make the drink</label>
+            <Instructions
+              placeholder="instructions here"
+              type="text"
+              onChange={(e) => {
+                setCreateDrink({
+                  ...createDrink,
+                  instructions: e.target.value,
+                });
+              }}
+            />
+            <ButtonReview
+              onClick={(e) => {
+                e.preventDefault(e);
+                setReviewDrink(true);
+              }}
+            >
+              Reveiw Drink
+            </ButtonReview>
+          </Form>
+        </Container>
+      )}
+    </div>
   );
 };
 
 const Container = styled.div`
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const Form = styled.form`
   display: flex;
@@ -99,8 +148,17 @@ const Form = styled.form`
   backdrop-filter: blur(10px);
   transition: all 0.2s ease-in-out;
 `;
-
-const ButtonSubmit = styled.button`
+const ButtonEdit = styled.button`
+  width: 200px;
+  height: 30px;
+  margin-top: 50px;
+`;
+const ButtonCreate = styled.button`
+  width: 200px;
+  height: 30px;
+  margin-top: 50px;
+`;
+const ButtonReview = styled.button`
   width: 200px;
   height: 50px;
 `;
