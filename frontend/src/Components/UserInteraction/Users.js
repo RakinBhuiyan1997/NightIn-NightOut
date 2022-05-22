@@ -54,7 +54,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   text-align: center;
   margin-top: 50px;
-  height: 110vh;
+  height: 130vh;
 `;
 
 const Card = styled.div`

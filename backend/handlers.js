@@ -59,8 +59,7 @@ const getUser = async (req, res) => {
     const user = await CreateUser.login(email, password);
     res.status(200).json({ user: user });
   } catch (err) {
-    const errors = handleErrors(err);
-    res.status(400).json({ status: 400, errors: errors });
+    res.status(400).json({ status: 400, errors: err });
   }
 };
 

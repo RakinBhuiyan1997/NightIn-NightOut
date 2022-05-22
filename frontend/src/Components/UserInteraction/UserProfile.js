@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { NightContext } from "../NightContext";
 import Loading from "../Loading";
+import { Link } from "react-router-dom";
 const UserProfile = () => {
   const { _id } = useParams();
   const { currentUser } = useContext(NightContext);
@@ -93,6 +94,7 @@ const UserProfile = () => {
           </div>
         </div>
       )}
+      <StyledLink to="/users">Back to Users</StyledLink>
     </Container>
   );
 };
@@ -111,6 +113,16 @@ const UserName = styled.h1`
 
 const Button = styled.button`
   width: 200px;
+  height: 30px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  margin-top: 100px;
+  border: 3px solid black;
+  width: 100px;
   height: 30px;
 `;
 
