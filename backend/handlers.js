@@ -331,6 +331,26 @@ const deleteDrink = async (req, res) => {
   console.log("disconnected");
 };
 
+const deleteUser = async (req, res) => {
+  const client = await new MongoClient(MONGO_URI, options);
+  const { currentUser } = req.body;
+  console.log(req.body);
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("Project");
+    const result = await db
+      .collection("users")
+      .deleteOne({ _id: ObjectId(currentUser._id) });
+    res
+      .status(200)
+      .json({ status: 200, data: result, message: "User deleted!" });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("disconnected");
+};
+
 module.exports = {
   addUser,
   getUser,
@@ -348,4 +368,5 @@ module.exports = {
   deleteFriend,
   deleteGame,
   deleteDrink,
+  deleteUser,
 };

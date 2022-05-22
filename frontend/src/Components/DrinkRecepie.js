@@ -64,7 +64,7 @@ const DrinkRecepie = () => {
 
   const removeDrink = async () => {
     const drink = await fetch("/api/users/favorites/deleteDrink", {
-      method: "DELETE",
+      method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

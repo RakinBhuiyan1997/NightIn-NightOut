@@ -44,7 +44,7 @@ const Games = () => {
     const game = await fetch(
       "http://localhost:8000/api/users/favorites/deleteGame",
       {
-        method: "DELETE",
+        method: "PATCH",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

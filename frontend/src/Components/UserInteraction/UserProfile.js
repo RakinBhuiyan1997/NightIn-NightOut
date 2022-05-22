@@ -40,7 +40,7 @@ const UserProfile = () => {
     e.preventDefault();
     setText("Add Friend");
     const addFriend = await fetch("/api/users/friends/deleteFriend", {
-      method: "DELETE",
+      method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

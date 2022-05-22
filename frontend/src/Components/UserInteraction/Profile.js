@@ -25,8 +25,9 @@ const Profile = () => {
   return (
     <Container>
       <h1>Hey {currentUser.firstName}, here are your deets</h1>
+      <p>Email: {currentUser.email}</p>
       <Box>
-        <FriendsList>Friends:</FriendsList>
+        <List>Friends:</List>
         {currentUser.friends.length > 0 ? (
           currentUser.friends.map((val) => {
             return (
@@ -39,8 +40,7 @@ const Profile = () => {
           <button onClick={goToUsers}>Go add some friends on the app!</button>
         )}
 
-        <p>Email: {currentUser.email}</p>
-        <FavoriteDrinks>Favorite Drinks:</FavoriteDrinks>
+        <List>Favorite Drinks:</List>
         {currentUser.favoriteDrinks.length > 1
           ? currentUser.favoriteDrinks.map((val) => {
               return (
@@ -51,20 +51,19 @@ const Profile = () => {
             })
           : "Check out the drinks and add them to your favorites!"}
 
-        <p>
-          Favorite Games:
-          {currentUser.favoriteGames.length > 1 ? (
-            currentUser.favoriteGames.map((val) => {
-              return (
-                <ul>
-                  <li> {val.game_name}</li>
-                </ul>
-              );
-            })
-          ) : (
-            <Button onClick={goToGames}>Check out the games!</Button>
-          )}
-        </p>
+        <List>Favorite Games:</List>
+        {currentUser.favoriteGames.length > 1 ? (
+          currentUser.favoriteGames.map((val) => {
+            return (
+              <ul>
+                <li> {val.game_name}</li>
+              </ul>
+            );
+          })
+        ) : (
+          <Button onClick={goToGames}>Check out the games!</Button>
+        )}
+
         <SignOut onClick={goToHomepage}>Sign Out</SignOut>
       </Box>
     </Container>
@@ -76,8 +75,8 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const FriendsList = styled.h2``;
-const FavoriteDrinks = styled.h2``;
+const List = styled.h2``;
+
 const Box = styled.div`
   display: flex;
   flex-direction: column;
