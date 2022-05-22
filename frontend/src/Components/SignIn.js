@@ -19,7 +19,8 @@ const SignIn = () => {
     });
 
     const result = await findUser.json();
-    setCurrentUser(result.data);
+    console.log(result);
+    setCurrentUser(result.user);
 
     navigate("/selection");
   };

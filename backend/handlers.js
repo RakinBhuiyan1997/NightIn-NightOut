@@ -36,23 +36,32 @@ const addUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  const client = await new MongoClient(MONGO_URI, options);
+  // const client = await new MongoClient(MONGO_URI, options);
+  // const { email, password } = req.body;
+  // try {
+  //   await client.connect();
+  //   console.log("connected");
+  //   const db = client.db("Project");
+  //   const result = await db.collection("users").findOne({
+  //     email,
+  //     password,
+  //   });
+
+  //   console.log(result);
+  //   res.status(200).json({ status: 200, data: result, message: "Success" });
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  // console.log("disconnected");
   const { email, password } = req.body;
   try {
-    await client.connect();
-    console.log("connected");
-    const db = client.db("Project");
-    const result = await db.collection("users").findOne({
-      email,
-      password,
-    });
-
-    console.log(result);
-    res.status(200).json({ status: 200, data: result, message: "Success" });
+    mongoose.connect(MONGO_URI, options);
+    const user = await CreateUser.login(email, password);
+    res.status(200).json({ user: user });
   } catch (err) {
-    console.log(err);
+    const errors = handleErrors(err);
+    res.status(400).json({ status: 400, errors: errors });
   }
-  console.log("disconnected");
 };
 
 const getDrinkCategories = async (req, res) => {
