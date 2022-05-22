@@ -21,6 +21,7 @@ const CreateDrink = () => {
       body: JSON.stringify(createDrink),
       headers: { "Content-Type": "application/json" },
     });
+    navigate("/nightin/drinks/createdDrinks");
   };
 
   const addItem = (e) => {
@@ -53,7 +54,7 @@ const CreateDrink = () => {
               setReviewDrink(false);
             }}
           >
-            Edit game
+            Edit Drink
           </ButtonEdit>
 
           <ButtonCreate
@@ -61,7 +62,7 @@ const CreateDrink = () => {
               handleSubmit(e);
             }}
           >
-            Create Game
+            Create Drink
           </ButtonCreate>
         </Container>
       ) : (

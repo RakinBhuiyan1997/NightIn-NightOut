@@ -23,6 +23,7 @@ const {
   deleteGame,
   deleteDrink,
   deleteUser,
+  getCreatedDrinks,
 } = require("./handlers");
 
 express()
@@ -57,6 +58,7 @@ express()
   .get("/api/games", getGames)
   .get("/api/users", getUsers)
   .get("/api/users/:id", findUser)
+  .get("/api/drinks/createdDrinks", getCreatedDrinks)
   // add new endpoints here ☝️
   // ---------------------------------
   // Nothing to modify below this line

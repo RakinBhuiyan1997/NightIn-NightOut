@@ -33,6 +33,11 @@ const Drinks = () => {
               </StyledLink>
             );
           })}
+          <CardCreate>
+            <StyledLink to={"/nightin/drinks/createdDrinks"}>
+              <Category>Created Drinks!</Category>
+            </StyledLink>
+          </CardCreate>
         </Container>
       )}
     </>
@@ -46,6 +51,16 @@ const Container = styled.div`
   align-items: center;
   text-align: center;
 `;
+
+const CardCreate = styled.div`
+  width: 125px;
+  height: 125px;
+  border: solid 5px black;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
+`;
+
 const Card = styled.div`
   width: 125px;
   height: 125px;

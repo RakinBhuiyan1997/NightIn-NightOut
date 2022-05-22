@@ -22,7 +22,7 @@ import Favorites from "./Components/Favorites";
 import FavoriteDrinks from "./Components/FavoriteDrinks";
 import FavoriteGames from "./Components/FavoriteGames";
 import Hamburger from "./Components/Hamburger";
-
+import CreatedDrinks from "./Components/CreatedDrinks";
 function App() {
   return (
     <Router>
@@ -48,6 +48,10 @@ function App() {
           <Route path="/user/favorites" element={<Favorites />} />
           <Route path="/user/favorites/drink" element={<FavoriteDrinks />} />
           <Route path="/user/favorites/games" element={<FavoriteGames />} />
+          <Route
+            path="/nightin/drinks/createdDrinks"
+            element={<CreatedDrinks />}
+          />
         </Routes>
       </Container>
     </Router>
